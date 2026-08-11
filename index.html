@@ -643,15 +643,15 @@
     <div class="section-head"><div><span class="station-tag">STATION 04 · 공유 · 환경 실천 성찰</span><h2 class="single-line-title">완성 게임을 <em>직접 플레이</em>하고 공유하기</h2></div><p>3차시에서 구현한 이동·충돌·점수·시간 규칙이 실제 게임에서 어떻게 작동하는지 확인합니다.</p></div>
     <div class="game-share-grid">
       <div class="game-shell">
-        <div class="game-topbar"><div><b>🎮 EARTH MANAGER · 게임 미리보기</b><div class="legend">방향키 또는 아래 버튼으로 이동 · 아이템은 무작위로 등장</div></div><div class="game-status"><span class="game-chip score">점수 <b id="gameScore">0</b></span><span class="game-chip water">해수면 <b id="waterPct">28</b>%</span><span class="game-chip timer">⏱ <b id="gameTimer">00:30</b></span></div></div>
+        <div class="game-topbar"><div><b>EARTH MANAGER · 게임 미리보기</b><div class="legend">방향키 또는 아래 버튼으로 이동 · 아이템은 무작위로 등장</div></div><div class="game-status"><span class="game-chip score">점수 <b id="gameScore">0</b></span><span class="game-chip water">해수면 <b id="waterPct">28</b>%</span><span class="game-chip timer">TIME <b id="gameTimer">00:30</b></span></div></div>
         <canvas id="earthGame" width="960" height="540" aria-label="지구 관리자 환경 게임 애니메이션"></canvas>
         <div class="game-controls"><div><button class="btn" style="background:var(--pink);color:white" id="startGame">▶ 시작 / 다시 시작</button><p class="legend">좋은·나쁜 아이템은 점수에만 영향을 줍니다. 해수면은 시간에 따라 서서히 상승합니다.</p></div><div class="dpad"><button class="up" data-dir="up">↑</button><button class="left" data-dir="left">←</button><button class="down" data-dir="down">↓</button><button class="right" data-dir="right">→</button></div></div>
 
       </div>
       <aside class="game-rule">
-        <div class="rule-card good"><h3>♻️ 좋은 아이템</h3><p><b>재활용 · 식물 · 에코코인</b></p><p>닿으면 점수 +1</p></div>
-        <div class="rule-card bad"><h3>🗑️ 나쁜 아이템</h3><p><b>플라스틱 · 쓰레기봉투 · 병</b></p><p>닿으면 점수 -1</p></div>
-        <div class="rule-card"><h3>⏱️ 30초 플레이 규칙</h3><p>친구 한 명의 게임은 <strong>30초 동안</strong> 플레이합니다. 해수면은 아이템과 관계없이 시간에 따라 서서히 상승합니다.</p><p>30초가 되거나 물에 닿으면 GAME OVER.</p></div>
+        <div class="rule-card good"><h3>좋은 아이템</h3><p><b>재활용 · 식물 · 에코코인</b></p><p>닿으면 점수 +1</p></div>
+        <div class="rule-card bad"><h3>나쁜 아이템</h3><p><b>플라스틱 · 쓰레기봉투 · 병</b></p><p>닿으면 점수 -1</p></div>
+        <div class="rule-card"><h3>30초 플레이 규칙</h3><p>친구 한 명의 게임은 <strong>30초 동안</strong> 플레이합니다. 해수면은 아이템과 관계없이 시간에 따라 서서히 상승합니다.</p><p>30초가 되거나 물에 닿으면 GAME OVER.</p></div>
 
       </aside>
     </div>
@@ -873,7 +873,7 @@
   // STATION 04 mini game animation
   const canvas=$('#earthGame'), ctx=canvas?.getContext('2d');
   let game={running:false,score:0,water:150,last:0,spawn:0,items:[],msg:'',msgT:0,timeLeft:30,player:{x:480,y:220,r:28},keys:{}};
-  const goodIcons=['♻️','🌱','🪙'], badIcons=['🗑️','🧴','🥤'];
+  const goodIcons=['R','G','E'], badIcons=['P','T','B'];
   function resetGame(){ game.running=true;game.score=0;game.water=150;game.items=[];game.spawn=0;game.msg='30초 동안 플레이!';game.msgT=1200;game.timeLeft=30;game.player.x=480;game.player.y=220;game.last=performance.now(); $('#gameScore').textContent='0'; $('#gameTimer').textContent='00:30'; requestAnimationFrame(loopGame); }
   function spawnItem(){ const good=Math.random()>.48; game.items.push({x:60+Math.random()*840,y:-30,vy:1.4+Math.random()*1.7,r:22,good,icon:(good?goodIcons:badIcons)[Math.floor(Math.random()*3)]}); }
   function collide(a,b){const dx=a.x-b.x,dy=a.y-b.y;return Math.hypot(dx,dy)<a.r+b.r;}
@@ -886,10 +886,22 @@
     // water
     const wy=h-game.water; const grd=ctx.createLinearGradient(0,wy,0,h);grd.addColorStop(0,'#22a9e6');grd.addColorStop(1,'#0878bd');ctx.fillStyle=grd;ctx.fillRect(0,wy,w,game.water);
     ctx.fillStyle='#ffffff88'; for(let x=0;x<w;x+=70){ctx.fillRect(x,wy+8,40,4)}
-    // items
-    ctx.font='38px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';game.items.forEach(it=>ctx.fillText(it.icon,it.x,it.y));
-    // player plane
-    ctx.save();ctx.translate(game.player.x,game.player.y);ctx.font='58px sans-serif';ctx.fillText('✈️',0,0);ctx.font='26px sans-serif';ctx.fillText('🐻‍❄️',-4,-4);ctx.restore();
+    // items: 운영체제별 이모지 폰트 차이를 피하기 위해 Canvas 도형 + 문자로 표시
+    ctx.textAlign='center';ctx.textBaseline='middle';
+    game.items.forEach(it=>{
+      ctx.save();ctx.translate(it.x,it.y);
+      ctx.beginPath();ctx.arc(0,0,20,0,Math.PI*2);
+      ctx.fillStyle=it.good?'#dff7ea':'#ffe8e8';ctx.fill();
+      ctx.strokeStyle=it.good?'#159a62':'#e34b4b';ctx.lineWidth=3;ctx.stroke();
+      ctx.fillStyle=it.good?'#11784d':'#b52f2f';ctx.font='900 18px Arial, sans-serif';ctx.fillText(it.icon,0,1);
+      ctx.restore();
+    });
+    // player: 이모지 대신 모든 브라우저에서 동일하게 보이는 간단한 비행체 도형
+    ctx.save();ctx.translate(game.player.x,game.player.y);
+    ctx.fillStyle='#ffffff';ctx.strokeStyle='#111a35';ctx.lineWidth=3;
+    ctx.beginPath();ctx.moveTo(0,-25);ctx.lineTo(15,5);ctx.lineTo(34,14);ctx.lineTo(12,16);ctx.lineTo(7,28);ctx.lineTo(0,20);ctx.lineTo(-7,28);ctx.lineTo(-12,16);ctx.lineTo(-34,14);ctx.lineTo(-15,5);ctx.closePath();ctx.fill();ctx.stroke();
+    ctx.beginPath();ctx.arc(0,3,7,0,Math.PI*2);ctx.fillStyle='#79dbff';ctx.fill();ctx.stroke();
+    ctx.restore();
     // message
     if(game.msgT>0){ctx.font='900 24px sans-serif';const tw=ctx.measureText(game.msg).width+34;ctx.fillStyle='#fff';ctx.strokeStyle='#111a35';ctx.lineWidth=3;ctx.beginPath();ctx.roundRect(game.player.x-tw/2,game.player.y-78,tw,42,14);ctx.fill();ctx.stroke();ctx.fillStyle='#111a35';ctx.fillText(game.msg,game.player.x,game.player.y-57);}
     if(!game.running){ctx.fillStyle='rgba(17,26,53,.65)';ctx.fillRect(0,0,w,h);ctx.fillStyle='white';ctx.font='900 46px sans-serif';ctx.fillText('GAME OVER',w/2,h/2-10);ctx.font='700 20px sans-serif';ctx.fillText('시작 / 다시 시작 버튼을 눌러주세요',w/2,h/2+36);}
