@@ -336,6 +336,13 @@
   .dpad .up{grid-column:2}.dpad .left{grid-row:2;grid-column:1}.dpad .down{grid-row:2;grid-column:2}.dpad .right{grid-row:2;grid-column:3}
   .game-rule{display:grid;grid-template-rows:repeat(3,minmax(0,1fr));gap:12px}
   .game-rule .rule-card{display:flex;flex-direction:column;justify-content:center;min-height:0}
+  .item-key{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0 8px}
+  .item-key-item{display:flex;align-items:center;gap:7px;padding:8px 9px;border-radius:12px;background:#fff;border:1px solid #dfe5ef;font-size:12px;font-weight:900;min-width:0}
+  .item-token{width:38px;height:38px;flex:0 0 38px;border-radius:10px;display:grid;place-items:center;border:2px solid}
+  .item-token svg{width:27px;height:27px;display:block}
+  .good .item-token{background:#dff7ea;border-color:#159a62;color:#11784d}
+  .bad .item-token{background:#ffe8e8;border-color:#e34b4b;color:#b52f2f}
+  @media(max-width:1100px){.item-key{grid-template-columns:1fr}.item-key-item{font-size:13px}}
   .rule-card{padding:15px;border-radius:16px;border:2px solid #dfe5ef;background:#fff}
   .rule-card.good{border-color:#9fe3c9;background:#f0fff8}.rule-card.bad{border-color:#ffc1c1;background:#fff5f5}
   .share-steps{display:grid;gap:9px;margin-top:12px}
@@ -649,8 +656,8 @@
 
       </div>
       <aside class="game-rule">
-        <div class="rule-card good"><h3>좋은 아이템</h3><p><b>재활용 · 식물 · 에코코인</b></p><p>닿으면 점수 +1</p></div>
-        <div class="rule-card bad"><h3>나쁜 아이템</h3><p><b>플라스틱 · 쓰레기봉투 · 병</b></p><p>닿으면 점수 -1</p></div>
+        <div class="rule-card good"><h3>좋은 아이템</h3><div class="item-key" aria-label="좋은 아이템 범례"><div class="item-key-item"><span class="item-token"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4l4 6h-3c-3 0-5 1-6 3" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M27 17l-4 6-2.5-4.5c1-2.7.6-5-1-7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M8 25l-3-7h5c1.4 2.5 3.5 3.8 6.5 3.8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></span><span>재활용</span></div><div class="item-key-item"><span class="item-token"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 27V14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M16 17C8 17 6 10 7 6c6 0 10 2 11 8" fill="none" stroke="currentColor" stroke-width="3"/><path d="M16 20c7 0 10-5 10-10-6 0-10 2-10 8" fill="none" stroke="currentColor" stroke-width="3"/></svg></span><span>식물</span></div><div class="item-key-item"><span class="item-token"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="3"/><path d="M19 9c-6 1-8 5-6 11 5 0 8-3 8-8-4 0-7 2-8 6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></span><span>에코코인</span></div></div><p>초록색 아이템에 닿으면 점수 +1</p></div>
+        <div class="rule-card bad"><h3>나쁜 아이템</h3><div class="item-key" aria-label="나쁜 아이템 범례"><div class="item-key-item"><span class="item-token"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M12 5h8v4l2 3v14H10V12l2-3z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M12 14h10M13 5h6" stroke="currentColor" stroke-width="2"/></svg></span><span>플라스틱</span></div><div class="item-key-item"><span class="item-token"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M10 10h12l3 17H7z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M12 10l-2-5m10 5 2-5M11 5h10" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></span><span>쓰레기봉투</span></div><div class="item-key-item"><span class="item-token"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M13 4h6v5l3 4v13c0 2-1 3-3 3h-6c-2 0-3-1-3-3V13l3-4z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M13 7h6M10 17h12" stroke="currentColor" stroke-width="2"/></svg></span><span>병</span></div></div><p>빨간색 아이템에 닿으면 점수 -1</p></div>
         <div class="rule-card"><h3>30초 플레이 규칙</h3><p>친구 한 명의 게임은 <strong>30초 동안</strong> 플레이합니다. 해수면은 아이템과 관계없이 시간에 따라 서서히 상승합니다.</p><p>30초가 되거나 물에 닿으면 GAME OVER.</p></div>
 
       </aside>
@@ -873,10 +880,32 @@
   // STATION 04 mini game animation
   const canvas=$('#earthGame'), ctx=canvas?.getContext('2d');
   let game={running:false,score:0,water:150,last:0,spawn:0,items:[],msg:'',msgT:0,timeLeft:30,player:{x:480,y:220,r:28},keys:{}};
-  const goodIcons=['R','G','E'], badIcons=['P','T','B'];
+  const goodIcons=['recycle','plant','eco'], badIcons=['plastic','trashbag','bottle'];
   function resetGame(){ game.running=true;game.score=0;game.water=150;game.items=[];game.spawn=0;game.msg='30초 동안 플레이!';game.msgT=1200;game.timeLeft=30;game.player.x=480;game.player.y=220;game.last=performance.now(); $('#gameScore').textContent='0'; $('#gameTimer').textContent='00:30'; requestAnimationFrame(loopGame); }
   function spawnItem(){ const good=Math.random()>.48; game.items.push({x:60+Math.random()*840,y:-30,vy:1.4+Math.random()*1.7,r:22,good,icon:(good?goodIcons:badIcons)[Math.floor(Math.random()*3)]}); }
   function collide(a,b){const dx=a.x-b.x,dy=a.y-b.y;return Math.hypot(dx,dy)<a.r+b.r;}
+  function drawItemIcon(c,type){
+    c.save(); c.lineCap='round'; c.lineJoin='round';
+    if(type==='recycle'){
+      c.beginPath();c.moveTo(-3,-10);c.lineTo(3,-4);c.lineTo(-1,-4);c.quadraticCurveTo(-8,-3,-9,3);c.stroke();
+      c.beginPath();c.moveTo(10,2);c.lineTo(4,7);c.lineTo(5,3);c.quadraticCurveTo(3,-4,-3,-5);c.stroke();
+      c.beginPath();c.moveTo(-8,8);c.lineTo(-10,0);c.lineTo(-6,3);c.quadraticCurveTo(-2,9,5,7);c.stroke();
+    }else if(type==='plant'){
+      c.beginPath();c.moveTo(0,11);c.lineTo(0,-3);c.stroke();
+      c.beginPath();c.moveTo(0,1);c.bezierCurveTo(-10,2,-11,-7,-10,-10);c.bezierCurveTo(-3,-10,1,-7,1,-2);c.stroke();
+      c.beginPath();c.moveTo(0,5);c.bezierCurveTo(10,5,11,-3,10,-7);c.bezierCurveTo(4,-7,0,-4,0,2);c.stroke();
+    }else if(type==='eco'){
+      c.beginPath();c.arc(0,0,11,0,Math.PI*2);c.stroke();
+      c.beginPath();c.moveTo(2,-7);c.bezierCurveTo(-7,-5,-7,5,-2,7);c.bezierCurveTo(6,6,7,0,7,-5);c.bezierCurveTo(1,-5,-3,-1,-3,5);c.stroke();
+    }else if(type==='plastic'){
+      c.strokeRect(-7,-7,14,16);c.beginPath();c.moveTo(-5,-7);c.lineTo(-4,-11);c.lineTo(4,-11);c.lineTo(5,-7);c.moveTo(-7,-1);c.lineTo(7,-1);c.stroke();
+    }else if(type==='trashbag'){
+      c.beginPath();c.moveTo(-7,-7);c.lineTo(7,-7);c.lineTo(10,10);c.lineTo(-10,10);c.closePath();c.stroke();c.beginPath();c.moveTo(-5,-7);c.lineTo(-7,-11);c.moveTo(5,-7);c.lineTo(7,-11);c.moveTo(-6,-11);c.lineTo(6,-11);c.stroke();
+    }else if(type==='bottle'){
+      c.beginPath();c.moveTo(-4,-11);c.lineTo(4,-11);c.lineTo(4,-6);c.lineTo(7,-2);c.lineTo(7,10);c.lineTo(-7,10);c.lineTo(-7,-2);c.lineTo(-4,-6);c.closePath();c.stroke();c.beginPath();c.moveTo(-4,-8);c.lineTo(4,-8);c.moveTo(-7,2);c.lineTo(7,2);c.stroke();
+    }
+    c.restore();
+  }
   function drawGame(){
     if(!ctx)return; const w=canvas.width,h=canvas.height; ctx.clearRect(0,0,w,h);
     const sky=ctx.createLinearGradient(0,0,0,h);sky.addColorStop(0,'#79dbff');sky.addColorStop(1,'#e9fbff');ctx.fillStyle=sky;ctx.fillRect(0,0,w,h);
@@ -893,7 +922,7 @@
       ctx.beginPath();ctx.arc(0,0,20,0,Math.PI*2);
       ctx.fillStyle=it.good?'#dff7ea':'#ffe8e8';ctx.fill();
       ctx.strokeStyle=it.good?'#159a62':'#e34b4b';ctx.lineWidth=3;ctx.stroke();
-      ctx.fillStyle=it.good?'#11784d':'#b52f2f';ctx.font='900 18px Arial, sans-serif';ctx.fillText(it.icon,0,1);
+      ctx.strokeStyle=it.good?'#11784d':'#b52f2f';ctx.fillStyle=it.good?'#11784d':'#b52f2f';ctx.lineWidth=2.5;drawItemIcon(ctx,it.icon);
       ctx.restore();
     });
     // player: 이모지 대신 모든 브라우저에서 동일하게 보이는 간단한 비행체 도형
