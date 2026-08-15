@@ -94,6 +94,10 @@
   .card{background:white;border:3px solid var(--navy);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
   .teacher-card{margin-top:18px;background:var(--navy);color:#fff;border-radius:18px;padding:18px 20px}
   .teacher-card strong{color:var(--yellow)}
+  .learning-goal{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;margin:-8px 0 24px;padding:17px 20px;background:#fff;border:3px solid var(--navy);border-radius:20px;box-shadow:var(--shadow)}
+  .learning-goal-label{display:grid;place-items:center;align-self:stretch;min-width:148px;padding:12px 14px;border-radius:14px;background:var(--navy);color:#fff;font-weight:1000;text-align:center}
+  .learning-goal-label small{display:block;color:var(--yellow);font-size:12px;margin-top:3px}
+  .learning-goal ul{display:grid;gap:6px;margin:0;padding-left:22px;font-weight:900;font-size:17px}
 
   /* BOARDING */
   .boarding-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
@@ -298,6 +302,21 @@
   .appendix-highlight{background:#fff1b8;border-color:#f3a000}
   .appendix-dark{background:var(--navy);color:#fff}
   .appendix-dark ul{color:#fff}
+  .backward-design{margin-bottom:64px}
+  .backward-design-flow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+  .backward-card{position:relative;background:#fff;border:3px solid var(--navy);border-radius:22px;padding:22px 20px;min-height:270px;box-shadow:var(--shadow);overflow:hidden}
+  .backward-card::before{content:attr(data-step);position:absolute;right:16px;top:8px;font-size:58px;line-height:1;font-weight:1000;color:rgba(28,40,79,.07)}
+  .backward-card:nth-child(1){border-top:8px solid var(--sky)}
+  .backward-card:nth-child(2){border-top:8px solid var(--purple)}
+  .backward-card:nth-child(3){border-top:8px solid var(--green)}
+  .backward-card h3{position:relative;margin:4px 0 9px;font-size:21px}
+  .backward-question{position:relative;margin:0 0 14px;color:#667087;font-size:14px;font-weight:900}
+  .backward-answer{margin:0;padding:14px;border-radius:14px;background:#f5f7fb;color:#26324b;font-weight:800;line-height:1.65}
+  .focus-points{display:grid;gap:9px;margin:0;padding:0;list-style:none}
+  .focus-points li{padding:10px 12px;border-radius:12px;background:#f5f7fb;color:#26324b;font-weight:900;line-height:1.4}
+  .backward-route{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:18px;padding:13px 16px;border-radius:15px;background:var(--navy);color:#fff;font-weight:900;text-align:center}
+  .backward-route i{color:var(--yellow);font-style:normal}
+  .appendix-divider{height:1px;background:#cfd5df;margin:0 0 58px}
 
   /* LOCKED JOURNEY */
   section.stage-locked{position:relative;min-height:280px}
@@ -363,12 +382,17 @@
     .teacher-card .teacher-detail-grid,.teacher-detail-grid{grid-template-columns:1fr}
     .entry-sequence{grid-template-columns:1fr}
     .game-controls{align-items:flex-start}
+    .learning-goal{grid-template-columns:1fr}
+    .learning-goal-label{min-width:0}
+    .learning-goal ul{font-size:15px}
   }
 
 
   @media(max-width:900px){
     .storyboard-grid{grid-template-columns:1fr}
     .appendix-grid{grid-template-columns:1fr 1fr}
+    .backward-design-flow{grid-template-columns:1fr}
+    .backward-card{min-height:0}
   }
   @media(max-width:620px){
     .appendix-grid,.appendix-bottom{grid-template-columns:1fr}
@@ -471,7 +495,7 @@
           <li>엔트리 학급 계정 미리 생성 · 로그인 확인</li>
           <li>Padlet URL·QR 준비</li>
           <li>활동지 ①~④ 컬러 인쇄 · 인원수 + 여유 5부</li>
-          <li>개인별 엔트리 기본 프로젝트 준비 · 로그인 확인</li>
+          <li>교사용 엔트리 기본 프로젝트를 학생별로 복제 · 로그인 확인</li>
           <li>인터넷 불안정 대비 엔트리 오프라인 앱 준비</li>
           <li>화면에 남은 시간 타이머 표시 · 3차시 10분마다 진도 체크</li>
         </ul>
@@ -486,6 +510,7 @@
       <div><span class="station-tag">STATION 01 · 지구 관리자 로그인</span><h2>지구에서 <em>긴급 편지</em>가 도착했습니다</h2></div>
       <p>기후변화와 해수면 상승 데이터를 보고, AI에게 질문하기 전 내 생각을 먼저 정리합니다.</p>
     </div>
+    <div class="learning-goal"><div class="learning-goal-label">오늘의 학습 목표<small>다 함께 읽어요!</small></div><ul><li>기후변화와 해수면 상승을 데이터로 설명할 수 있다.</li><li>내 생각과 AI의 답을 비교하고 판단할 수 있다.</li></ul></div>
     <div class="letter-box">
       <div class="envelope"><button id="openLetter">✉️ 편지 열기</button></div>
       <article class="letter closed" id="letter">
@@ -539,6 +564,7 @@
       <div><span class="station-tag">STATION 02 · 환경 탐구 · 게임 설계</span><h2>컴퓨팅 사고력으로 <em>게임 설계</em></h2></div>
       <p>큰 문제를 작은 기능으로 나누고, 움직임과 조건을 좌표·변수·순서로 표현합니다.</p>
     </div>
+    <div class="learning-goal"><div class="learning-goal-label">오늘의 학습 목표<small>다 함께 읽어요!</small></div><ul><li>문제를 작은 기능으로 나누고 게임 알고리즘을 설계할 수 있다.</li><li>게임의 진행 과정을 4컷 스토리보드로 표현할 수 있다.</li></ul></div>
 
     <div class="tabs" role="tablist">
       <button class="tab-btn active" data-tab="decompose">1. 분해</button>
@@ -547,7 +573,7 @@
       <button class="tab-btn" data-tab="algorithm">4. 알고리즘</button>
       <button class="tab-btn" data-tab="prompt">R+T+C+F 프롬프트</button>
     </div>
-    <div class="tab-panel active" id="decompose"><h3>🧩 분해</h3><p>“환경 게임 만들기”라는 큰 문제를 이동, 아이템 충돌, 점수, 시간, 해수면, 종료 조건처럼 작은 기능으로 나눕니다.</p></div>
+    <div class="tab-panel active" id="decompose"><h3>🧩 분해</h3><p>“환경 게임 만들기”라는 큰 문제를 이동, 아이템 충돌, 점수(지구 위험도), 시간, 해수면, 종료 조건처럼 작은 기능으로 나눕니다.</p></div>
     <div class="tab-panel" id="pattern"><h3>🔁 패턴 찾기</h3><p>여러 게임에서 반복되는 공통 규칙과 기능을 찾아봅니다.</p></div>
     <div class="tab-panel" id="abstract"><h3>🎯 추상화</h3><p>게임에 꼭 필요한 이동·충돌·변수·시간·종료 조건을 남기고, 꾸미기 요소와 구분합니다.</p></div>
     <div class="tab-panel" id="algorithm"><h3>🪜 알고리즘</h3><p>“왼쪽으로 이동”을 x좌표 감소처럼 컴퓨터가 실행할 수 있는 명령으로 바꾸고, 게임의 실행 순서를 정합니다.</p></div>
@@ -617,11 +643,13 @@
       <div><span class="station-tag">STATION 03 · 게임 구현 · 디버깅</span><h2 class="single-line-title">엔트리 블록 <em>직접 구현</em></h2></div>
       <p>실제 엔트리 블록을 보며 알고리즘을 코드로 바꿉니다. “왼쪽 이동 = x좌표 감소”처럼 행동과 블록의 의미를 연결해 확인합니다.</p>
     </div>
-    <div class="entry-sequence"><span>① 이동 알고리즘</span><span>② 점수 변화</span><span>③ 충돌 조건</span><span>④ 시간별 해수면 상승</span><span>⑤ 성공·실패</span></div>
+    <div class="learning-goal"><div class="learning-goal-label">오늘의 학습 목표<small>다 함께 읽어요!</small></div><ul><li>변수·조건·반복·신호를 활용해 환경 게임을 구현할 수 있다.</li><li>게임을 실행하며 오류를 찾고 수정할 수 있다.</li></ul></div>
+    <div class="teacher-card teacher-only hidden" style="margin:-6px 0 22px"><strong>계획서-교안 용어 연결</strong> · 계획서의 ‘지구 위험도’는 기본 프로젝트의 점수 변수로 구현합니다. 좋은 아이템과 나쁜 아이템이 이 값을 어떻게 바꾸는지 먼저 설명한 뒤 코딩을 시작합니다.</div>
+    <div class="entry-sequence"><span>① 이동 알고리즘</span><span>② 점수(지구 위험도)</span><span>③ 충돌 조건</span><span>④ 시간별 해수면 상승</span><span>⑤ 성공·실패</span></div>
     <div class="coding-lab">
       <div class="code-nav" id="codeNav">
         <button class="active" data-code="movement">① 이동 블록</button>
-        <button data-code="score">② 점수 블록</button>
+        <button data-code="score">② 점수·위험도 블록</button>
         <button data-code="collision">③ 충돌 블록</button>
         <button data-code="water">④ 해수면 블록</button>
         <button data-code="over">⑤ 성공·실패</button>
@@ -647,7 +675,8 @@
 <section class="s4" id="station4">
   <div class="stage-lock-message">🔒 STATION 03 스탬프를 찍으면 게임 공유 단계가 열립니다.</div>
   <div class="wrap">
-    <div class="section-head"><div><span class="station-tag">STATION 04 · 공유 · 환경 실천 성찰</span><h2 class="single-line-title">완성 게임을 <em>직접 플레이</em>하고 공유하기</h2></div><p>3차시에서 구현한 이동·충돌·점수·시간 규칙이 실제 게임에서 어떻게 작동하는지 확인합니다.</p></div>
+    <div class="section-head"><div><span class="station-tag">STATION 04 · 공유 · 환경 실천 성찰</span><h2 class="single-line-title">완성 게임을 <em>직접 플레이</em>하고 공유하기</h2></div><p>3차시에서 구현한 이동·충돌·변수·시간 규칙이 실제 게임에서 어떻게 작동하는지 확인합니다.</p></div>
+    <div class="learning-goal"><div class="learning-goal-label">오늘의 학습 목표<small>다 함께 읽어요!</small></div><ul><li>친구의 게임을 존중하며 구체적으로 피드백할 수 있다.</li><li>생활 속에서 실천할 환경 행동 한 가지를 정할 수 있다.</li></ul></div>
     <div class="game-share-grid">
       <div class="game-shell">
         <div class="game-topbar"><div><b>EARTH MANAGER · 게임 미리보기</b><div class="legend">방향키 또는 아래 버튼으로 이동 · 아이템은 무작위로 등장</div></div><div class="game-status"><span class="game-chip score">점수 <b id="gameScore">0</b></span><span class="game-chip water">해수면 <b id="waterPct">28</b>%</span><span class="game-chip timer">TIME <b id="gameTimer">00:30</b></span></div></div>
@@ -701,6 +730,31 @@
 
 <section class="teacher-appendix teacher-only hidden" id="teacherAppendix">
   <div class="wrap">
+    <div class="backward-design" aria-labelledby="backwardDesignTitle">
+      <div class="section-head">
+        <div><span class="eyebrow" style="background:var(--sky)">🧭 LESSON DESIGN · 교사용 실행 설계</span><h2 id="backwardDesignTitle" style="margin-top:14px">이 수업의 <em style="color:var(--sky);font-style:normal">설계 원칙</em></h2></div>
+        <p>처음 보는 교사도 수업의 목표·평가·운영 절차를 한눈에 파악하고 실행할 수 있도록 설계했습니다.</p>
+      </div>
+      <div class="backward-design-flow">
+        <article class="backward-card" data-step="1">
+          <h3>1 · 목표</h3>
+          <p class="backward-question">학생이 무엇을 할 수 있어야 하는가?</p>
+          <ul class="focus-points"><li>데이터로 기후변화 설명</li><li>AI 답변 비교·판단</li><li>환경 게임 설계·구현</li><li>생활 속 실천 연결</li></ul>
+        </article>
+        <article class="backward-card" data-step="2">
+          <h3>2 · 평가</h3>
+          <p class="backward-question">배움을 어떤 증거로 확인하는가?</p>
+          <ul class="focus-points"><li>활동지 ①~④</li><li>게임 핵심 기능 작동</li><li>디버깅 과정 기록</li><li>동료 피드백·실천 다짐</li></ul>
+        </article>
+        <article class="backward-card" data-step="3">
+          <h3>3 · 실행</h3>
+          <p class="backward-question">처음 보는 교사도 바로 수업할 수 있는가?</p>
+          <ul class="focus-points"><li>차시별 준비물·시간 배분</li><li>핵심 발문·예상 반응</li><li>활동지·엔트리 구현 순서</li><li>디버깅 지원·평가 포인트</li></ul>
+        </article>
+      </div>
+      <div class="backward-route"><span>목표 명료화</span><i>→</i><span>평가 기준 구체화</span><i>→</i><span>차시별 실행 절차</span><i>→</i><span>누구나 재현 가능한 수업</span></div>
+    </div>
+    <div class="appendix-divider" aria-hidden="true"></div>
     <div class="section-head">
       <div><span class="eyebrow" style="background:var(--purple)">📚 REFERENCES · 교사용 확장 자료</span><h2 style="margin-top:14px">더 깊이 <em style="color:var(--purple);font-style:normal">알고 싶은 사람</em>을 위한 자료</h2></div>
       <p>교사 확장 수업·학생 심화 탐구·학부모 안내에 활용할 수 있는 자료입니다.</p>
