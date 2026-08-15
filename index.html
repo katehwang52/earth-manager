@@ -536,6 +536,17 @@
       <article class="data-card" style="--tint:#fff3df"><div class="data-label">DATA 03 · 해수면 상승</div><div class="data-num">+<span class="count" data-target="21">0</span>cm</div><small>1880년 대비 전 지구 평균</small></article>
     </div>
 
+    <div class="algorithm-map">
+      <h3>AI는 어떻게 답을 만들까요?</h3>
+      <p class="legend">AI는 많은 학습 데이터에서 공통되는 특징과 관계를 찾아 새로운 질문에 알맞은 결과를 만듭니다.</p>
+      <div class="algorithm-grid">
+        <div class="algorithm-card"><b>① 학습 데이터 보기</b>숫자·글·사진처럼 AI가 학습한 여러 자료의 예를 살펴봅니다.</div>
+        <div class="algorithm-card"><b>② 공통점 찾기</b>AI가 반복되는 특징과 관계를 찾아 분류·예측하는 과정을 확인합니다.</div>
+        <div class="algorithm-card"><b>③ 결과 판단하기</b>AI의 답을 원자료·출처와 비교하고 오류나 빠진 관점이 없는지 판단합니다.</div>
+        <div class="algorithm-card"><b>미니 체험</b>같은 질문을 표현만 바꾸어 두 번 묻고, 달라진 답을 비교해 AI가 항상 같은 정답을 주는 것은 아님을 확인합니다.</div>
+      </div>
+    </div>
+
     <div class="hallucination-lab" aria-label="AI 환각 체험">
       <article class="ai-chat">
         <div class="ai-chat-head"><div><span class="station-tag" style="color:var(--purple)">AI THINKING PARTNER</span><h3 style="margin:6px 0 0">AI는 정답기계가 아닙니다</h3></div><span style="font-size:38px">🤖</span></div>
@@ -561,7 +572,7 @@
       <div class="think-step"><span>🔎</span>비교</div>
       <div class="think-step"><span>✅</span>판단</div>
     </div>
-    <div class="teacher-card teacher-only hidden"><strong>1차시 교사용 운영</strong><div class="teacher-detail-grid"><div class="teacher-detail"><b>준비물</b>태블릿/노트북 · 활동지 ① · 필기구·형광펜 · AI 계정</div><div class="teacher-detail"><b>핵심 발문</b>“2050년의 지구는 지금과 어떻게 다를까요?”<br>“AI에게 무엇을 물어보면 도움이 될까요?”</div><div class="teacher-detail"><b>평가 포인트</b>데이터 해석 정확성 · 질문의 질 · AI 결과의 비판적 판단</div><div class="teacher-detail"><b>2022 개정 교육과정 연결</b>실과 [6실05-05] 인공지능이 만들어지는 과정과 사회적 영향 탐색</div></div></div>
+    <div class="teacher-card teacher-only hidden"><strong>1차시 교사용 운영</strong><div class="teacher-detail-grid"><div class="teacher-detail"><b>준비물</b>태블릿/노트북 · 활동지 ① · 필기구·형광펜 · AI 계정</div><div class="teacher-detail"><b>핵심 발문</b>“AI는 어떤 자료에서 공통점을 찾았을까요?”<br>“AI의 답을 그대로 믿어도 될까요?”</div><div class="teacher-detail"><b>평가 포인트</b>데이터 해석 · 기계학습 과정 이해 · AI 결과의 비판적 판단</div><div class="teacher-detail"><b>성취기준·해설 반영</b>[6실05-05] 간단한 AI 도구를 체험하고, 기계학습의 기본 원리와 사회적 영향을 탐색</div></div></div>
     <div style="margin-top:22px"><button class="btn orange complete" data-complete="1">STATION 01 완료 · 스탬프 찍기</button></div>
   </div>
 </section>
@@ -573,7 +584,7 @@
       <div><span class="station-tag">STATION 02 · 환경 탐구 · 게임 설계</span><h2>컴퓨팅 사고력으로 <em>게임 설계</em></h2></div>
       <p>큰 문제를 작은 기능으로 나누고, 움직임과 조건을 좌표·변수·순서로 표현합니다.</p>
     </div>
-    <div class="learning-goal"><div class="learning-goal-label">오늘의 학습 목표<small>다 함께 읽어요!</small></div><ul><li>문제를 작은 기능으로 나누고 게임 알고리즘을 설계할 수 있다.</li><li>게임의 진행 과정을 4컷 스토리보드로 표현할 수 있다.</li></ul></div>
+    <div class="learning-goal"><div class="learning-goal-label">오늘의 학습 목표<small>다 함께 읽어요!</small></div><ul><li>문제의 현재 상태와 목표 상태를 정하고 작은 기능으로 나눌 수 있다.</li><li>게임 알고리즘을 자연어·의사코드·스토리보드로 표현할 수 있다.</li></ul></div>
 
     <div class="tabs" role="tablist">
       <button class="tab-btn active" data-tab="decompose">1. 분해</button>
@@ -582,7 +593,7 @@
       <button class="tab-btn" data-tab="algorithm">4. 알고리즘</button>
       <button class="tab-btn" data-tab="prompt">R+T+C+F 프롬프트</button>
     </div>
-    <div class="tab-panel active" id="decompose"><h3>🧩 분해</h3><p>“환경 게임 만들기”라는 큰 문제를 이동, 아이템 충돌, 점수(지구 위험도), 시간, 해수면, 종료 조건처럼 작은 기능으로 나눕니다.</p></div>
+    <div class="tab-panel active" id="decompose"><h3>🧩 분해</h3><p>“환경 게임 만들기”라는 큰 문제를 이동, 아이템 충돌, 지구 보호 점수, 시간, 해수면, 종료 조건처럼 작은 기능으로 나눕니다.</p></div>
     <div class="tab-panel" id="pattern"><h3>🔁 패턴 찾기</h3><p>여러 게임에서 반복되는 공통 규칙과 기능을 찾아봅니다.</p></div>
     <div class="tab-panel" id="abstract"><h3>🎯 추상화</h3><p>게임에 꼭 필요한 이동·충돌·변수·시간·종료 조건을 남기고, 꾸미기 요소와 구분합니다.</p></div>
     <div class="tab-panel" id="algorithm"><h3>🪜 알고리즘</h3><p>“왼쪽으로 이동”을 x좌표 감소처럼 컴퓨터가 실행할 수 있는 명령으로 바꾸고, 게임의 실행 순서를 정합니다.</p></div>
@@ -640,7 +651,7 @@
       </div>
       <div class="story-actions"><button class="btn soft" id="saveStoryboard" type="button">🖼️ 4컷 이미지 저장</button></div>
     </div>
-    <div class="teacher-card teacher-only hidden"><strong>2차시 교사용 운영</strong><div class="teacher-detail-grid"><div class="teacher-detail"><b>준비물</b>태블릿/노트북 · 활동지 ②·① · 색연필</div><div class="teacher-detail"><b>핵심 발문</b>“왼쪽으로 이동한다는 것을 좌표로 어떻게 표현할까요?”<br>“이 행동을 컴퓨터 명령으로 바꾸면 무엇일까요?”</div><div class="teacher-detail"><b>평가 포인트</b>CT 분해 · 좌표와 이동의 관계 이해 · 스토리보드 논리성</div><div class="teacher-detail"><b>2022 개정 교육과정 연결</b>실과 [6실05-01] 생활 속 문제 해결 알고리즘 표현</div></div></div>
+    <div class="teacher-card teacher-only hidden"><strong>2차시 교사용 운영</strong><div class="teacher-detail-grid"><div class="teacher-detail"><b>준비물</b>태블릿/노트북 · 활동지 ②·① · 색연필</div><div class="teacher-detail"><b>핵심 발문</b>“지금 상태와 원하는 상태는 무엇인가요?”<br>“이 과정을 자연어와 의사코드로 어떻게 표현할까요?”</div><div class="teacher-detail"><b>평가 포인트</b>현재·목표 상태 정의 · 문제 분해 · 알고리즘 표현의 논리성</div><div class="teacher-detail"><b>성취기준·해설 반영</b>[6실05-01] 생활 속 문제를 탐색하고 자연어·의사코드·순서도 등으로 알고리즘 표현</div></div></div>
     <div style="margin-top:22px"><button class="btn primary complete" data-complete="2">STATION 02 완료 · 스탬프 찍기</button></div>
   </div>
 </section>
@@ -653,7 +664,7 @@
       <p>실제 엔트리 블록을 보며 알고리즘을 코드로 바꿉니다. “왼쪽 이동 = x좌표 감소”처럼 행동과 블록의 의미를 연결해 확인합니다.</p>
     </div>
     <div class="learning-goal"><div class="learning-goal-label">오늘의 학습 목표<small>다 함께 읽어요!</small></div><ul><li>컴퓨터 명령을 조합하여 환경 게임 프로그램을 작성할 수 있다.</li><li>게임을 실행하며 오류를 찾고 수정할 수 있다.</li></ul></div>
-    <div class="teacher-card teacher-only hidden" style="margin:-6px 0 22px"><strong>계획서-교안 용어 연결</strong> · 계획서의 ‘지구 위험도’는 기본 프로젝트의 점수 변수로 구현합니다. 좋은 아이템과 나쁜 아이템이 이 값을 어떻게 바꾸는지 먼저 설명한 뒤 코딩을 시작합니다.</div>
+    <div class="teacher-card teacher-only hidden" style="margin:-6px 0 22px"><strong>교안 용어 안내</strong> · 점수 변수는 ‘지구 보호 점수’로 통일합니다. 좋은 아이템과 나쁜 아이템이 이 값을 어떻게 바꾸는지 먼저 설명한 뒤 코딩을 시작합니다.</div>
     <div class="entry-sequence"><span>① 이동 알고리즘</span><span>② 지구 보호 점수</span><span>③ 충돌 조건</span><span>④ 시간별 해수면 상승</span><span>⑤ 성공·실패</span></div>
     <div class="coding-lab">
       <div class="code-nav" id="codeNav">
@@ -677,7 +688,7 @@
       </div>
       <aside class="debug-card"><h3>🐞 디버깅 4단계</h3><p>발견 → 추론 → 시도 → 확인 순으로 문제를 해결합니다.</p><div class="debug-steps"><div class="debug-step">1. 어떤 문제가 생겼는지 발견</div><div class="debug-step">2. 원인을 추론</div><div class="debug-step">3. 한 가지를 수정해 시도</div><div class="debug-step">4. 다시 실행해 확인</div></div><button class="btn yellow" id="debugBtn">버그 힌트 보기</button><p id="debugHint" style="margin-top:14px;color:#fff4b4"></p></aside>
     </div>
-    <div class="teacher-card teacher-only hidden"><strong>3차시 교사용 운영</strong><div class="teacher-detail-grid"><div class="teacher-detail"><b>준비물</b>1인 1PC · 엔트리 로그인 · 활동지 ③·②</div><div class="teacher-detail"><b>운영 전략</b>기본 프로젝트 활용 · 필수 기능 우선 · 수준별 확장 · 단계별 도움 제공</div><div class="teacher-detail"><b>평가 포인트</b>알고리즘과 블록의 연결 · 핵심 기능 구현 · 디버깅 과정 기록</div><div class="teacher-detail"><b>2022 개정 교육과정 연결</b>실과 [6실05-02] 컴퓨터 명령 체험과 문제 해결 프로그램 작성</div></div></div>
+    <div class="teacher-card teacher-only hidden"><strong>3차시 교사용 운영</strong><div class="teacher-detail-grid"><div class="teacher-detail"><b>준비물</b>1인 1PC · 엔트리 로그인 · 활동지 ③·②</div><div class="teacher-detail"><b>운영 전략</b>블록 기능 암기보다 2차시 알고리즘을 코드로 옮기고 실행·수정하는 과정에 집중</div><div class="teacher-detail"><b>평가 포인트</b>산출물 완성도보다 알고리즘과 블록의 연결 · 시도 · 디버깅 과정 기록</div><div class="teacher-detail"><b>성취기준·해설 반영</b>[6실05-02] 컴퓨터 명령을 체험하고 주어진 문제를 해결하는 프로그램 작성</div></div></div>
     <div style="margin-top:22px"><button class="btn primary complete" data-complete="3">STATION 03 완료 · 스탬프 찍기</button></div>
   </div>
 </section>
@@ -686,7 +697,7 @@
   <div class="stage-lock-message">🔒 STATION 03 스탬프를 찍으면 게임 공유 단계가 열립니다.</div>
   <div class="wrap">
     <div class="section-head"><div><span class="station-tag">STATION 04 · 공유 · 환경 실천 성찰</span><h2 class="single-line-title">완성 게임을 <em>직접 플레이</em>하고 공유하기</h2></div><p>3차시에서 구현한 이동·충돌·변수·시간 규칙이 실제 게임에서 어떻게 작동하는지 확인합니다.</p></div>
-    <div class="learning-goal"><div class="learning-goal-label">오늘의 학습 목표<small>다 함께 읽어요!</small></div><ul><li>친구와 완성한 게임을 공유하고 구체적으로 피드백할 수 있다.</li><li>생활 속에서 실천할 환경 행동 한 가지를 정할 수 있다.</li></ul></div>
+    <div class="learning-goal"><div class="learning-goal-label">오늘의 학습 목표<small>다 함께 읽어요!</small></div><ul><li>친구와 협력해 게임을 점검·수정하고 완성한 산출물을 공유할 수 있다.</li><li>친구의 게임에 구체적인 피드백을 남기고 환경 실천을 정할 수 있다.</li></ul></div>
     <div class="game-share-grid">
       <div class="game-shell">
         <div class="game-topbar"><div><b>EARTH MANAGER · 게임 미리보기</b><div class="legend">방향키 또는 아래 버튼으로 이동 · 아이템은 무작위로 등장</div></div><div class="game-status"><span class="game-chip score">지구 보호 점수 <b id="gameScore">0</b></span><span class="game-chip water">해수면 <b id="waterPct">28</b>%</span><span class="game-chip timer">TIME <b id="gameTimer">00:30</b></span></div></div>
@@ -701,9 +712,9 @@
 
       </aside>
     </div>
-    <div class="share-procedure"><h3>🖼 게임 공유 절차</h3><div class="share-steps"><div class="share-step"><b>1. 완성 게임 저장</b><br>엔트리에서 저장하고 공유 링크 복사</div><div class="share-step"><b>2. Padlet 게시</b><br>제목 + 링크 + 한 줄 소개 올리기</div><div class="share-step"><b>3. 친구 게임 플레이</b><br>4개 게임을 각각 30초씩 체험</div><div class="share-step"><b>4. 좋은 피드백</b><br>이모지 + 어떤 점이 좋았는지 한 줄 남기기</div></div></div>
+    <div class="share-procedure"><h3>🖼 게임 공유 절차</h3><div class="share-steps"><div class="share-step"><b>1. 함께 점검·수정</b><br>친구와 실행해 보고 오류 한 가지 개선</div><div class="share-step"><b>2. 산출물 공유</b><br>엔트리 링크와 한 줄 소개를 Padlet에 게시</div><div class="share-step"><b>3. 친구 게임 플레이</b><br>4개 게임을 각각 30초씩 체험</div><div class="share-step"><b>4. 좋은 피드백</b><br>이모지 + 어떤 점이 좋았는지 한 줄 남기기</div></div></div>
     <div class="pledge"><input id="pledgeInput" placeholder="예시: 나는 앞으로 텀블러를 꼭 들고 다닌다" /><button class="btn" style="background:var(--pink);color:white" id="savePledge">실천 다짐 저장</button></div><p id="pledgeResult" style="font-weight:900;margin-top:12px"></p>
-    <div class="teacher-card teacher-only hidden"><strong>4차시 교사용 운영</strong><div class="teacher-detail-grid"><div class="teacher-detail"><b>준비물</b>완성 게임 · 활동지 ④ · Padlet</div><div class="teacher-detail"><b>갤러리워크</b>4개 게임 체험 · 게임당 30초 플레이+30초 관찰 · 이모지와 짧은 응원 메시지</div><div class="teacher-detail"><b>평가 포인트</b>협력 과정 · 산출물 공유 · 존중하는 피드백</div><div class="teacher-detail"><b>2022 개정 교육과정 연결</b>실과 [6실05-03] 실생활 문제 해결 프로그램의 협력적 작성과 공유</div></div></div>
+    <div class="teacher-card teacher-only hidden"><strong>4차시 교사용 운영</strong><div class="teacher-detail-grid"><div class="teacher-detail"><b>준비물</b>완성 게임 · 활동지 ④ · Padlet</div><div class="teacher-detail"><b>협력 절차</b>짝과 실행 점검 → 오류 한 가지 수정 → 공유 링크 게시 → 상호 피드백</div><div class="teacher-detail"><b>평가 포인트</b>협력적 수정 과정 · 산출물 공유 · 피드백의 구체성</div><div class="teacher-detail"><b>성취기준·해설 반영</b>[6실05-03] 실생활 문제 해결 프로그램을 협력하여 작성하고 산출물을 타인과 공유</div></div></div>
     <div style="margin-top:22px"><button class="btn" style="background:var(--pink);color:white" data-complete="4">STATION 04 완료 · 마지막 스탬프</button></div>
   </div>
 </section>
