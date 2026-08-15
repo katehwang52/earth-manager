@@ -669,8 +669,7 @@
         <button data-code="score">② 지구 보호 점수 블록</button>
         <button data-code="collision">③ 충돌 블록</button>
         <button data-code="water">④ 해수면 블록</button>
-        <button data-code="signals">⑤ 성공·실패 신호</button>
-        <button data-code="over">⑥ 지구관리자 완성</button>
+        <button data-code="over">⑤ 지구관리자 완성</button>
       </div>
       <div class="code-view">
         <div class="code-view-head"><div><b id="codeTitle">⓪ 엔트리 기본 환경</b><div class="legend" id="codeDesc">오브젝트·블록·시작하기 버튼의 위치를 먼저 확인</div></div><span class="eyebrow" style="background:var(--green)">ENTRY BLOCK</span></div>
@@ -681,7 +680,7 @@
     <div class="mission-grid" style="margin-top:18px">
       <div class="card">
         <h3>✅ 5기능 완성 체크</h3><div class="progress"><div class="progress-bar" id="progressBar"></div></div><p><strong id="progressText">0 / 5 완료</strong></p>
-        <div class="checklist" id="checklist"><div class="mission-item"><span>↔️ 방향키 4방향 이동</span><button>완료</button></div><div class="mission-item"><span>⭐ 좋은 아이템 점수 +1</span><button>완료</button></div><div class="mission-item"><span>💥 오브젝트 충돌 이벤트</span><button>완료</button></div><div class="mission-item"><span>🌊 물 y좌표 변화</span><button>완료</button></div><div class="mission-item"><span>🏁 성공·실패 신호</span><button>완료</button></div></div>
+        <div class="checklist" id="checklist"><div class="mission-item"><span>↔️ 방향키 4방향 이동</span><button>완료</button></div><div class="mission-item"><span>⭐ 좋은 아이템 점수 +1</span><button>완료</button></div><div class="mission-item"><span>💥 오브젝트 충돌 이벤트</span><button>완료</button></div><div class="mission-item"><span>🌊 물 y좌표 변화</span><button>완료</button></div><div class="mission-item"><span>🏁 게임 끝 신호</span><button>완료</button></div></div>
       </div>
       <aside class="debug-card"><h3>🐞 디버깅 4단계</h3><p>발견 → 추론 → 시도 → 확인 순으로 문제를 해결합니다.</p><div class="debug-steps"><div class="debug-step">1. 어떤 문제가 생겼는지 발견</div><div class="debug-step">2. 원인을 추론</div><div class="debug-step">3. 한 가지를 수정해 시도</div><div class="debug-step">4. 다시 실행해 확인</div></div><button class="btn yellow" id="debugBtn">버그 힌트 보기</button><p id="debugHint" style="margin-top:14px;color:#fff4b4"></p></aside>
     </div>
@@ -944,8 +943,7 @@
   Object.assign(codeSlides.score,{title:'② 아이템으로 지구 보호 점수 바꾸기',desc:'좋은 아이템에 닿으면 지구 보호 점수 +1',img:'assets/entry-blocks/score.png',note:'좋은 아이템과 나쁜 아이템의 점수 변화 방향을 구분합니다.'});
   Object.assign(codeSlides.collision,{title:'③ 두 오브젝트의 충돌 판별',desc:'닿는 순간 조건을 참으로 만드는 블록 구성',img:'assets/entry-blocks/collision.png',note:'좋은 아이템과 나쁜 아이템을 각각 선택해 충돌 조건을 확인합니다.'});
   Object.assign(codeSlides.water,{title:'④ 시간에 따른 해수면 상승',desc:'물 배경의 y좌표를 바꿔 상승을 표현',img:'assets/entry-blocks/water.png',note:'초시계 값에 따라 물 배경의 위치가 단계적으로 달라지는지 확인합니다.'});
-  Object.assign(codeSlides.over,{title:'⑥ 지구관리자 완성',desc:'PDF 43쪽 최신본 · 29개 블록 전체 구성',img:'assets/entry-blocks/final.png',note:'이동·초시계·게임 실패 조건이 한 오브젝트에서 연결되는 흐름을 확인합니다.'});
-  codeSlides.signals={title:'⑤ 성공·실패 신호로 배경 바꾸기',desc:'게임 성공·실패 신호에 맞춰 엔딩 배경 전환',img:'assets/entry-blocks/signals.png',note:'각 신호를 받았을 때 성공 또는 실패 배경으로 바뀌는지 실행해 봅니다.'};
+  Object.assign(codeSlides.over,{title:'⑤ 지구관리자 완성',desc:'최신 최종 코드 · 24개 블록 전체 구성',img:'assets/entry-blocks/final.png',note:'이동·초시계·게임 끝 신호가 한 오브젝트에서 연결되는 흐름을 확인합니다.'});
   $('#codeTitle').textContent=codeSlides.basic.title; $('#codeDesc').textContent=codeSlides.basic.desc; $('#codeImage').src=codeSlides.basic.img; $('#codeNote').innerHTML=''; $('#codeNote').classList.add('hidden');
   $('#codeNav')?.addEventListener('click',e=>{
     const b=e.target.closest('button[data-code]'); if(!b)return;
