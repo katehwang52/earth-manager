@@ -247,10 +247,10 @@
   .curriculum-list,.prep-list{display:grid;gap:9px;margin:0;padding:0;list-style:none}
   .curriculum-list li,.prep-list li{padding:11px 12px;border-radius:13px;background:#f5f7fb;border:1px solid #e0e5ef}
   .teacher-panel.navy .prep-list li{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.12)}
-  .teacher-detail-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
+  .teacher-detail-grid{display:grid;grid-template-columns:.78fr 1fr 1fr 1.38fr;gap:10px;margin-top:14px}
   .teacher-detail{background:#f6f8fc;border:1px solid #dfe5ef;border-radius:14px;padding:13px;font-size:14px}
   .teacher-detail b{display:block;margin-bottom:5px;color:var(--navy)}
-  .teacher-card .teacher-detail-grid{grid-template-columns:repeat(4,1fr)}
+  .teacher-card .teacher-detail-grid{grid-template-columns:.78fr 1fr 1fr 1.38fr}
   .teacher-card .teacher-detail{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.13);color:#fff}
   .teacher-card .teacher-detail b{color:var(--yellow)}
 
@@ -347,8 +347,11 @@
   .game-chip.score{background:var(--purple)}
   .game-chip.water{background:var(--sky)}
   .game-chip.timer{background:var(--pink);font-variant-numeric:tabular-nums}
-  .difficulty-panel{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:10px 0 12px;padding:12px;border:2px solid #dbe1ec;border-radius:18px;background:#f8f9fc}
-  .difficulty-control{padding:11px 12px;border:1px solid #d8deea;border-radius:14px;background:#fff}
+  .game-bottom-bar{display:grid;grid-template-columns:auto minmax(320px,1fr) auto;gap:14px;align-items:center;margin-top:12px;padding:13px;border:1px solid #dce2ed;border-radius:18px;background:#f5f7fb}
+  .game-start-group{text-align:center;min-width:160px}
+  .game-start-group .legend{max-width:190px;margin:6px auto 0;font-size:11px;line-height:1.35}
+  .difficulty-panel{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:0;padding:0;border:0;background:transparent}
+  .difficulty-control{padding:8px 10px;border:1px solid #d8deea;border-radius:12px;background:#fff}
   .difficulty-control label{display:flex;justify-content:space-between;gap:8px;align-items:center;font-weight:900;color:var(--navy);font-size:14px}
   .difficulty-control output{color:var(--purple);font-size:17px}
   .difficulty-control input{width:100%;margin-top:9px;accent-color:var(--purple)}
@@ -386,7 +389,9 @@
   @media(max-width:620px){
     .teacher-card .teacher-detail-grid,.teacher-detail-grid{grid-template-columns:1fr}
     .entry-sequence{grid-template-columns:1fr}
-    .game-controls{align-items:flex-start}
+    .game-bottom-bar{grid-template-columns:1fr auto}
+    .game-start-group{grid-column:1/-1;text-align:left}
+    .game-start-group .legend{max-width:none;margin-left:0}
     .learning-goal{grid-template-columns:1fr}
     .learning-goal-label{min-width:0}
     .learning-goal ul{font-size:15px}
@@ -420,7 +425,7 @@
     <div>
       <span class="eyebrow">🌍 EARTH DAY · AI × PBL PROGRAM</span>
       <p class="lead" style="margin:20px 0 12px">초등 5~6학년 · AI융합 환경교육 · 4차시</p>
-      <h1><span class="hero-title-line">AI와 함께하는</span><span class="hero-title-line"><span class="accent">지구 관리자</span>가 되어라</span></h1>
+      <h1><span class="hero-title-line">AI와 함께하는</span><span class="hero-title-line"><span class="accent">지구 관리자</span></span></h1>
       <p class="lead">“내가 선택하는 2050년의 지구”</p>
       <div class="hero-actions">
         <a class="btn orange" href="#boarding">🚂 미션 시작하기</a>
@@ -558,7 +563,7 @@
       <div class="think-step"><span>🔎</span>비교</div>
       <div class="think-step"><span>✅</span>판단</div>
     </div>
-    <div class="teacher-card teacher-only hidden"><strong>1차시 교사용 운영</strong><div class="teacher-detail-grid"><div class="teacher-detail"><b>준비물</b>태블릿/노트북 · 활동지 ① · 필기구·형광펜 · AI 계정</div><div class="teacher-detail"><b>핵심 발문</b>“2050년의 지구는 지금과 어떻게 다를까요?”<br>“AI에게 무엇을 물어보면 도움이 될까요?”</div><div class="teacher-detail"><b>평가 포인트</b>데이터 해석 정확성 · 질문의 질 · 개인정보·저작권 준수</div><div class="teacher-detail"><b>교육과정 연결</b>과학 [6과16-02] · 실과 [6실04-11] · 도덕 [6도04-02]</div></div></div>
+    <div class="teacher-card teacher-only hidden"><strong>1차시 교사용 운영</strong><div class="teacher-detail-grid"><div class="teacher-detail"><b>준비물</b>태블릿/노트북 · 활동지 ① · 필기구·형광펜 · AI 계정</div><div class="teacher-detail"><b>핵심 발문</b>“2050년의 지구는 지금과 어떻게 다를까요?”<br>“AI에게 무엇을 물어보면 도움이 될까요?”</div><div class="teacher-detail"><b>평가 포인트</b>데이터 해석 정확성 · 질문의 질 · 개인정보·저작권 준수</div><div class="teacher-detail"><b>교육과정 연결</b>과학 [6과16-02] 미래 문제 탐구 · 실과 [6실04-11] 순차·선택·반복 · 도덕 [6도04-02] 성찰과 실천</div></div></div>
     <div style="margin-top:22px"><button class="btn orange complete" data-complete="1">STATION 01 완료 · 스탬프 찍기</button></div>
   </div>
 </section>
@@ -637,7 +642,7 @@
       </div>
       <div class="story-actions"><button class="btn soft" id="saveStoryboard" type="button">🖼️ 4컷 이미지 저장</button></div>
     </div>
-    <div class="teacher-card teacher-only hidden"><strong>2차시 교사용 운영</strong><div class="teacher-detail-grid"><div class="teacher-detail"><b>준비물</b>태블릿/노트북 · 활동지 ②·① · 색연필</div><div class="teacher-detail"><b>핵심 발문</b>“왼쪽으로 이동한다는 것을 좌표로 어떻게 표현할까요?”<br>“이 행동을 컴퓨터 명령으로 바꾸면 무엇일까요?”</div><div class="teacher-detail"><b>평가 포인트</b>CT 분해 · 좌표와 이동의 관계 이해 · 스토리보드 논리성</div><div class="teacher-detail"><b>교육과정 연결</b>실과 [6실04-08] · 국어 [6국01-06]</div></div></div>
+    <div class="teacher-card teacher-only hidden"><strong>2차시 교사용 운영</strong><div class="teacher-detail-grid"><div class="teacher-detail"><b>준비물</b>태블릿/노트북 · 활동지 ②·① · 색연필</div><div class="teacher-detail"><b>핵심 발문</b>“왼쪽으로 이동한다는 것을 좌표로 어떻게 표현할까요?”<br>“이 행동을 컴퓨터 명령으로 바꾸면 무엇일까요?”</div><div class="teacher-detail"><b>평가 포인트</b>CT 분해 · 좌표와 이동의 관계 이해 · 스토리보드 논리성</div><div class="teacher-detail"><b>교육과정 연결</b>실과 [6실04-08] 절차적 문제 해결 · 국어 [6국01-06] 추론하며 듣기</div></div></div>
     <div style="margin-top:22px"><button class="btn primary complete" data-complete="2">STATION 02 완료 · 스탬프 찍기</button></div>
   </div>
 </section>
@@ -686,13 +691,8 @@
     <div class="game-share-grid">
       <div class="game-shell">
         <div class="game-topbar"><div><b>EARTH MANAGER · 게임 미리보기</b><div class="legend">방향키 또는 아래 버튼으로 이동 · 아이템은 무작위로 등장</div></div><div class="game-status"><span class="game-chip score">지구 보호 점수 <b id="gameScore">0</b></span><span class="game-chip water">해수면 <b id="waterPct">28</b>%</span><span class="game-chip timer">TIME <b id="gameTimer">00:30</b></span></div></div>
-        <div class="difficulty-panel" aria-label="게임 난이도 조절">
-          <div class="difficulty-control"><label for="characterSpeed">🏃 캐릭터 속도 <output id="characterSpeedValue">5</output></label><input id="characterSpeed" type="range" min="1" max="10" value="5"></div>
-          <div class="difficulty-control"><label for="seaSpeed">🌊 해수면 속도 <output id="seaSpeedValue">3</output></label><input id="seaSpeed" type="range" min="1" max="10" value="3"></div>
-          <div class="difficulty-control"><label for="obstacleCount">🪨 장애물 개수 <output id="obstacleCountValue">8</output></label><input id="obstacleCount" type="range" min="1" max="10" value="8"></div>
-        </div>
         <canvas id="earthGame" width="960" height="540" aria-label="지구 관리자 환경 게임 애니메이션"></canvas>
-        <div class="game-controls"><div><button class="btn" style="background:var(--pink);color:white" id="startGame">▶ 시작 / 다시 시작</button><p class="legend">슬라이더를 움직이면 게임 중에도 난이도가 바로 바뀝니다. 좋은·나쁜 아이템은 지구 보호 점수에만 영향을 줍니다.</p></div><div class="dpad"><button class="up" data-dir="up">↑</button><button class="left" data-dir="left">←</button><button class="down" data-dir="down">↓</button><button class="right" data-dir="right">→</button></div></div>
+        <div class="game-bottom-bar"><div class="game-start-group"><button class="btn" style="background:var(--pink);color:white" id="startGame">▶ 게임 시작</button><p class="legend">설정은 플레이 중에도 적용됩니다</p></div><div class="difficulty-panel" aria-label="게임 난이도 조절"><div class="difficulty-control"><label for="characterSpeed">🏃 캐릭터 속도 <output id="characterSpeedValue">5</output></label><input id="characterSpeed" type="range" min="1" max="10" value="5"></div><div class="difficulty-control"><label for="seaSpeed">🌊 해수면 속도 <output id="seaSpeedValue">3</output></label><input id="seaSpeed" type="range" min="1" max="10" value="3"></div><div class="difficulty-control"><label for="obstacleCount">🪨 장애물 개수 <output id="obstacleCountValue">8</output></label><input id="obstacleCount" type="range" min="1" max="10" value="8"></div></div><div class="dpad"><button class="up" data-dir="up">↑</button><button class="left" data-dir="left">←</button><button class="down" data-dir="down">↓</button><button class="right" data-dir="right">→</button></div></div>
 
       </div>
       <aside class="game-rule">
@@ -704,7 +704,7 @@
     </div>
     <div class="share-procedure"><h3>🖼 게임 공유 절차</h3><div class="share-steps"><div class="share-step"><b>1. 완성 게임 저장</b><br>엔트리에서 저장하고 공유 링크 복사</div><div class="share-step"><b>2. Padlet 게시</b><br>제목 + 링크 + 한 줄 소개 올리기</div><div class="share-step"><b>3. 친구 게임 플레이</b><br>4개 게임을 각각 30초씩 체험</div><div class="share-step"><b>4. 좋은 피드백</b><br>이모지 + 어떤 점이 좋았는지 한 줄 남기기</div></div></div>
     <div class="pledge"><input id="pledgeInput" placeholder="예시: 나는 앞으로 텀블러를 꼭 들고 다닌다" /><button class="btn" style="background:var(--pink);color:white" id="savePledge">실천 다짐 저장</button></div><p id="pledgeResult" style="font-weight:900;margin-top:12px"></p>
-    <div class="teacher-card teacher-only hidden"><strong>4차시 교사용 운영</strong><div class="teacher-detail-grid"><div class="teacher-detail"><b>준비물</b>완성 게임 · 활동지 ④ · Padlet</div><div class="teacher-detail"><b>갤러리워크</b>4개 게임 체험 · 게임당 30초 플레이+30초 관찰 · 이모지와 짧은 응원 메시지</div><div class="teacher-detail"><b>평가 포인트</b>존중하는 피드백 · 실천 다짐 구체성 · 온라인 소통 예절</div><div class="teacher-detail"><b>교육과정 연결</b>도덕 [6도04-02] · 국어 [6국01-06]</div></div></div>
+    <div class="teacher-card teacher-only hidden"><strong>4차시 교사용 운영</strong><div class="teacher-detail-grid"><div class="teacher-detail"><b>준비물</b>완성 게임 · 활동지 ④ · Padlet</div><div class="teacher-detail"><b>갤러리워크</b>4개 게임 체험 · 게임당 30초 플레이+30초 관찰 · 이모지와 짧은 응원 메시지</div><div class="teacher-detail"><b>평가 포인트</b>존중하는 피드백 · 실천 다짐 구체성 · 온라인 소통 예절</div><div class="teacher-detail"><b>교육과정 연결</b>도덕 [6도04-02] 성찰과 실천 · 국어 [6국01-06] 추론하며 듣기</div></div></div>
     <div style="margin-top:22px"><button class="btn" style="background:var(--pink);color:white" data-complete="4">STATION 04 완료 · 마지막 스탬프</button></div>
   </div>
 </section>
