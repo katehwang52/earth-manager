@@ -266,16 +266,10 @@
 
 
   /* ALGORITHM CONCEPT MAP */
-  .algorithm-map{margin:18px 0 24px;background:#fff;border:3px solid var(--navy);border-radius:24px;padding:20px;box-shadow:var(--shadow)}
-  .algorithm-map h3{margin-bottom:6px}
-  .algorithm-map .legend{margin-bottom:14px}
-  .algorithm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-  .algorithm-card{border:2px solid #dfe5ef;border-radius:16px;padding:15px;background:#fafbfe}
-  .algorithm-card b{display:block;font-size:17px;margin-bottom:6px}
-  .algorithm-card code{display:block;margin-top:8px;padding:8px 9px;border-radius:10px;background:#eef2ff;color:var(--navy);font-weight:900;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
-  .algorithm-rule{margin-top:12px;padding:13px 15px;border-radius:14px;background:#f2fff9;border:2px solid #bcebd8;font-weight:800}
-  @media(max-width:900px){.algorithm-grid{grid-template-columns:1fr 1fr}}
-  @media(max-width:620px){.algorithm-grid{grid-template-columns:1fr}}
+  .algorithm-map{margin:18px 0 24px;background:#fff;border:3px solid var(--navy);border-radius:24px;padding:22px;box-shadow:var(--shadow)}
+  .algorithm-map h3{margin-bottom:6px}.algorithm-map .legend{margin-bottom:18px}.coordinate-lab{display:grid;grid-template-columns:1.35fr .65fr;gap:18px}.coordinate-board{border:2px solid var(--navy);border-radius:20px;padding:16px;background:#f5fbff}.coordinate-board-head{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:12px;flex-wrap:wrap}.coordinate-readout{padding:8px 12px;border-radius:12px;background:var(--yellow);font-weight:1000}.coordinate-plane{position:relative;aspect-ratio:16/9;min-height:300px;border:2px solid var(--navy);border-radius:16px;overflow:hidden;background-color:#dff3ff;background-image:linear-gradient(rgba(34,169,230,.14) 1px,transparent 1px),linear-gradient(90deg,rgba(34,169,230,.14) 1px,transparent 1px);background-size:10% 10%}.coordinate-plane::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:3px;background:var(--navy)}.coordinate-plane::after{content:"";position:absolute;top:50%;left:0;right:0;height:3px;background:var(--navy)}.axis-label{position:absolute;z-index:2;font-weight:1000}.axis-label.x-plus{right:10px;top:calc(50% + 7px)}.axis-label.x-minus{left:10px;top:calc(50% + 7px)}.axis-label.y-plus{left:calc(50% + 8px);top:8px}.axis-label.y-minus{left:calc(50% + 8px);bottom:8px}.axis-origin{position:absolute;z-index:2;left:calc(50% + 8px);top:calc(50% + 7px);font-weight:900}.coordinate-character{position:absolute;z-index:5;left:50%;top:50%;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#fff;border:4px solid var(--purple);font-size:34px;transform:translate(-50%,-50%);transition:left .3s,top .3s;box-shadow:0 6px 14px rgba(17,26,53,.18)}.coordinate-controls{display:grid;grid-template-columns:repeat(3,52px);justify-content:center;gap:7px;margin-top:14px}.coordinate-controls button{height:46px;border:2px solid var(--navy);border-radius:12px;background:#fff;font-size:22px;font-weight:1000}.coordinate-controls button:hover{background:#eee9ff}.coordinate-controls .up{grid-column:2}.coordinate-controls .left{grid-column:1}.coordinate-controls .down{grid-column:2}.coordinate-controls .right{grid-column:3}.coordinate-side{display:grid;align-content:start;gap:12px}.coordinate-rule-card{border:2px solid #dfe5ef;border-radius:16px;padding:17px;background:#fafbfe}.coordinate-rule-card b{display:block;font-size:17px;margin-bottom:5px}.coordinate-rule-card code{display:block;margin-top:8px;padding:9px;border-radius:9px;background:#eef2ff;font-weight:1000}.coordinate-collision-tip{padding:17px;border-radius:16px;background:var(--navy);color:#fff}.coordinate-collision-tip b{display:block;color:var(--yellow);font-size:18px;margin-bottom:5px}.coordinate-collision-tip p{margin:0;color:#e1e8f7}
+  @media(max-width:900px){.coordinate-lab{grid-template-columns:1fr}.coordinate-side{grid-template-columns:1fr 1fr}.coordinate-collision-tip{grid-column:1/-1}}
+  @media(max-width:620px){.coordinate-side{grid-template-columns:1fr}.coordinate-collision-tip{grid-column:auto}.coordinate-plane{min-height:240px}}
 
   /* STATION 02 · INTERACTIVE STORYBOARD */
   .storyboard-wrap{margin-top:26px;background:#fff;border:3px solid var(--navy);border-radius:26px;padding:22px;box-shadow:var(--shadow)}
@@ -348,13 +342,13 @@
   .step.locked{opacity:.42;cursor:not-allowed;filter:grayscale(.7)}
 
   /* ENTRY CODING LAB */
-  .coding-lab{display:grid;grid-template-columns:280px 1fr;gap:18px;margin-top:18px}
-  .code-nav{display:grid;gap:8px;align-content:start}
-  .code-nav button{border:2px solid #dbe1ec;background:#fff;border-radius:15px;padding:14px;text-align:left;font-weight:900;color:var(--navy)}
+  .coding-lab{display:block;margin-top:18px}
+  .code-nav{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin-bottom:14px}
+  .code-nav button{border:2px solid #dbe1ec;background:#fff;border-radius:15px;padding:13px 10px;text-align:center;font-weight:900;color:var(--navy);white-space:nowrap}
   .code-nav button.active{border-color:var(--green);background:#effbf7;box-shadow:0 6px 18px rgba(24,185,138,.14)}
   .code-view{background:#fff;border:3px solid var(--navy);border-radius:24px;overflow:hidden;box-shadow:var(--shadow)}
   .code-view-head{padding:18px 20px;border-bottom:1px solid #e2e7ef;display:flex;justify-content:space-between;gap:12px;align-items:center}
-  .code-view img{width:100%;display:block;max-height:560px;object-fit:contain;background:#f4f4f4}
+  .code-view img{width:100%;display:block;max-height:780px;object-fit:contain;background:#f4f4f4}
   .code-note{padding:16px 20px;background:#f5fff9;border-top:1px solid #dceee7}
 
   /* LIVE GAME */
@@ -401,9 +395,9 @@
   .legend{font-size:13px;color:#616b80;margin:8px 0 0}
 
   @media(max-width:900px){
-    .teacher-overview,.coding-lab,.game-share-grid{grid-template-columns:1fr}
-    .code-nav{grid-template-columns:repeat(5,minmax(120px,1fr));overflow:auto}
-    .code-nav button{white-space:nowrap}
+    .teacher-overview,.game-share-grid{grid-template-columns:1fr}
+    .code-nav{display:flex;overflow-x:auto;padding:2px 2px 8px;scroll-snap-type:x proximity}
+    .code-nav button{flex:0 0 180px;scroll-snap-align:start}
     .teacher-card .teacher-detail-grid,.teacher-detail-grid{grid-template-columns:1fr 1fr}
   }
   @media(max-width:620px){
@@ -543,7 +537,7 @@
         <ul class="prep-list">
           <li>엔트리 학급 계정 미리 생성 · 로그인 확인</li>
           <li>Padlet URL·QR 준비</li>
-          <li>활동지 ①~④ 컬러 인쇄 · 인원수 + 여유 5부</li>
+          <li>학생 기기에서 반응형 웹페이지 접속 · 그리기·저장 기능 확인</li>
           <li>교사용 엔트리 기본 프로젝트를 학생별로 복제 · 로그인 확인</li>
           <li>인터넷 불안정 대비 엔트리 오프라인 앱 준비</li>
           <li>화면에 남은 시간 타이머 표시 · 3차시 10분마다 진도 체크</li>
@@ -657,15 +651,20 @@
     <div class="tab-panel" id="algorithm"><h3>🪜 알고리즘</h3><p>“왼쪽으로 이동”을 x좌표 감소처럼 컴퓨터가 실행할 수 있는 명령으로 바꾸고, 게임의 실행 순서를 정합니다.</p></div>
 
     <div class="algorithm-map">
-      <h3>알고리즘을 코드로 바꾸면?</h3>
-      <p class="legend">사람이 이해하는 행동을 컴퓨터가 실행할 수 있는 구체적인 명령으로 바꿔봅니다.</p>
-      <div class="algorithm-grid">
-        <div class="algorithm-card"><b>← 왼쪽으로 이동</b>엔트리 좌표에서 왼쪽으로 10만큼 이동하면 x좌표가 10만큼 작아집니다.<code>x좌표 -= 10</code></div>
-        <div class="algorithm-card"><b>→ 오른쪽으로 이동</b>엔트리 좌표에서 오른쪽으로 10만큼 이동하면 x좌표가 10만큼 커집니다.<code>x좌표 += 10</code></div>
-        <div class="algorithm-card"><b>↑ 위로 이동</b>엔트리 좌표에서 위로 10만큼 이동하면 y좌표가 10만큼 커집니다.<code>y좌표 += 10</code></div>
-        <div class="algorithm-card"><b>↓ 아래로 이동</b>엔트리 좌표에서 아래로 10만큼 이동하면 y좌표가 10만큼 작아집니다.<code>y좌표 -= 10</code></div>
+      <h3>좌표를 움직여 보면 코드가 보여요!</h3>
+      <p class="legend">방향 버튼을 눌러 캐릭터를 움직여 보세요. 한 번 누를 때마다 좌표가 10씩 바뀝니다.</p>
+      <div class="coordinate-lab">
+        <div class="coordinate-board">
+          <div class="coordinate-board-head"><b>📐 엔트리 좌표평면</b><span class="coordinate-readout" id="coordinateReadout">현재 위치 (0, 0)</span></div>
+          <div class="coordinate-plane" id="coordinatePlane"><span class="axis-label x-minus">− x</span><span class="axis-label x-plus">+ x</span><span class="axis-label y-plus">+ y</span><span class="axis-label y-minus">− y</span><span class="axis-origin">(0, 0)</span><div class="coordinate-character" id="coordinateCharacter" aria-label="좌표 이동 캐릭터">🧑‍🚀</div></div>
+          <div class="coordinate-controls" aria-label="좌표 이동 버튼"><button class="up" type="button" data-coordinate-move="up">↑</button><button class="left" type="button" data-coordinate-move="left">←</button><button class="down" type="button" data-coordinate-move="down">↓</button><button class="right" type="button" data-coordinate-move="right">→</button></div>
+        </div>
+        <div class="coordinate-side">
+          <div class="coordinate-rule-card"><b>← → 가로 이동은 x좌표</b><span>왼쪽은 작아지고, 오른쪽은 커져요.</span><code>왼쪽 x − 10 · 오른쪽 x + 10</code></div>
+          <div class="coordinate-rule-card"><b>↑ ↓ 세로 이동은 y좌표</b><span>위쪽은 커지고, 아래쪽은 작아져요.</span><code>위 y + 10 · 아래 y − 10</code></div>
+          <div class="coordinate-collision-tip"><b>💡 같은 좌표라면 같은 자리에 있어요!</b><p>엔트리는 평면 위에서 움직여요. 두 오브젝트의 x좌표와 y좌표가 같으면 같은 자리에 겹치므로 서로 닿게 됩니다. 오브젝트는 크기가 있어서 좌표가 아주 가까워도 닿을 수 있어요.</p></div>
+        </div>
       </div>
-      <div class="algorithm-rule">핵심 질문: “왼쪽으로 간다”를 컴퓨터에게 어떻게 설명할까? → <strong>x좌표를 줄인다.</strong></div>
     </div>
 
     <div class="difficulty-grid">
@@ -708,7 +707,7 @@
       </div>
       <div class="story-actions"><button class="btn soft" id="saveStoryboard" type="button">🖼️ 4컷 이미지 저장</button></div>
     </div>
-    <div class="teacher-card teacher-only hidden"><strong>2차시 교사용 운영</strong><div class="teacher-detail-grid"><div class="teacher-detail"><b>준비물</b>태블릿/노트북 · 활동지 ②·① · 색연필</div><div class="teacher-detail"><b>핵심 발문</b>“지금 상태와 원하는 상태는 무엇인가요?”<br>“이 과정을 자연어와 의사코드로 어떻게 표현할까요?”</div><div class="teacher-detail"><b>평가 포인트</b>현재·목표 상태 정의 · 문제 분해 · 알고리즘 표현의 논리성</div><div class="teacher-detail"><b>성취기준·해설 반영</b>[6실05-01] 생활 속 문제를 탐색하고 자연어·의사코드·순서도 등으로 알고리즘 표현</div></div></div>
+    <div class="teacher-card teacher-only hidden"><strong>2차시 교사용 운영</strong><div class="teacher-detail-grid"><div class="teacher-detail"><b>준비물</b>태블릿/노트북 · 활동지 ②·① · 색연필</div><div class="teacher-detail"><b>핵심 발문</b>“지금 상태와 원하는 상태는 무엇인가요?”<br>“엔트리에서 오른쪽으로 이동하려면 x좌표를 어떻게 바꿔야 할까요?”</div><div class="teacher-detail"><b>평가 포인트</b>현재·목표 상태 정의 · 문제 분해 · 알고리즘 표현의 논리성</div><div class="teacher-detail"><b>성취기준·해설 반영</b>[6실05-01] 생활 속 문제를 탐색하고 자연어·의사코드·순서도 등으로 알고리즘 표현</div></div></div>
     <div style="margin-top:22px"><button class="btn primary complete" data-complete="2">STATION 02 완료 · 스탬프 찍기</button></div>
   </div>
 </section>
@@ -920,6 +919,21 @@
     $('#'+btn.dataset.tab).classList.add('active');
   }));
 
+  const coordinateState={x:0,y:0};
+  function updateCoordinateCharacter(){
+    const character=$('#coordinateCharacter');if(!character)return;
+    character.style.left=`${50+coordinateState.x*.8}%`;
+    character.style.top=`${50-coordinateState.y*.8}%`;
+    $('#coordinateReadout').textContent=`현재 위치 (${coordinateState.x}, ${coordinateState.y})`;
+  }
+  $$('[data-coordinate-move]').forEach(btn=>btn.addEventListener('click',()=>{
+    const dir=btn.dataset.coordinateMove;
+    if(dir==='left')coordinateState.x=Math.max(-50,coordinateState.x-10);
+    if(dir==='right')coordinateState.x=Math.min(50,coordinateState.x+10);
+    if(dir==='up')coordinateState.y=Math.min(50,coordinateState.y+10);
+    if(dir==='down')coordinateState.y=Math.max(-50,coordinateState.y-10);
+    updateCoordinateCharacter();
+  }));
   $$('input[type=range][data-output]').forEach(r=>r.addEventListener('input',()=>{$('#'+r.dataset.output).value=r.value;}));
 
 
