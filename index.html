@@ -198,6 +198,9 @@
   .thumb{height:140px;border-radius:16px;background:linear-gradient(135deg,#dff7ff,#ecfff5);display:grid;place-items:center;font-size:54px;margin-bottom:14px}
   .pledge{display:grid;grid-template-columns:1fr auto;gap:10px;margin-top:24px}
   .pledge input{border:2px solid var(--line);border-radius:14px;padding:14px 15px;font-weight:800}
+  .submit-card{margin-top:24px;padding:22px;border:3px solid var(--navy);border-radius:22px;background:#effbf7;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center}
+  .submit-card h3{margin:0 0 6px}.submit-card p{margin:0;color:var(--muted)}
+  .submit-card .btn{min-width:260px}.submit-status{grid-column:1/-1;margin:0!important;font-weight:900;color:var(--green)}
 
   /* FINAL */
   .final{background:linear-gradient(160deg,#101a34,#1b2a54);color:#fff}
@@ -243,6 +246,7 @@
     .scenario{height:330px}
     .world h3{font-size:28px}
     .pledge{grid-template-columns:1fr}
+    .submit-card{grid-template-columns:1fr}.submit-card .btn{width:100%;min-width:0}
     .certificate{padding:30px 18px}
     .certificate .big{font-size:32px}
     .certificate .name{font-size:28px}
@@ -787,6 +791,8 @@
         <input id="certNameInput" placeholder="이름 또는 관리자 ID" />
         <button class="btn yellow" id="updateCert" style="width:100%">인증서 미리보기 갱신</button>
         <button class="btn soft" id="printCert" style="width:100%;margin-top:10px">🖨️ 인쇄 / PDF 저장</button>
+        <button class="btn" id="submitStudentWork" type="button" style="width:100%;margin-top:10px">📮 활동 결과 선생님께 보내기</button>
+        <p class="submit-status" id="submitStudentStatus" role="status" aria-live="polite" style="margin-top:12px!important"></p>
         <p style="font-size:13px;color:#cfd6e8;margin-top:14px">브라우저 인쇄 창에서 ‘PDF로 저장’을 선택할 수 있습니다.</p>
       </div>
       <div class="certificate" id="certificate">
@@ -962,10 +968,26 @@
   $('#storyWidth')?.addEventListener('change',e=>storyState.width=Number(e.target.value));
   $('#storyEraser')?.addEventListener('click',e=>{storyState.eraser=!storyState.eraser;e.currentTarget.classList.toggle('active',storyState.eraser);e.currentTarget.textContent=storyState.eraser?'✏️ 펜으로':'🧽 지우개';});
   $$('.undo-panel').forEach(b=>b.addEventListener('click',()=>undoStory($('#'+b.dataset.canvas))));
-  $('#saveStoryboard')?.addEventListener('click',()=>{
+  function buildStoryboardCanvas(){
     const out=document.createElement('canvas');out.width=1600;out.height=1250;const o=out.getContext('2d');o.fillStyle='#f7f8fb';o.fillRect(0,0,out.width,out.height);o.fillStyle='#111a35';o.font='900 48px sans-serif';o.fillText('EARTH MANAGER · 4컷 게임 스토리보드',55,70);
     const panels=[['story1','START'],['story2','PLAY'],['story3','CRISIS'],['story4','ENDING']];
     panels.forEach((p,i)=>{const col=i%2,row=Math.floor(i/2),x=55+col*760,y=110+row*545,w=710,h=430;o.fillStyle='#fff';o.strokeStyle='#111a35';o.lineWidth=4;o.beginPath();o.roundRect(x,y,w,h,20);o.fill();o.stroke();o.fillStyle='#111a35';o.font='800 26px sans-serif';o.fillText(`Panel ${i+1} · ${p[1]}`,x+22,y+38);o.drawImage($('#'+p[0]),x+22,y+55,w-44,270);const texts=$$(`[data-story-text^="${i+1}"]`).map(t=>t.value.trim()).filter(Boolean);o.font='20px sans-serif';o.fillStyle='#334057';texts.forEach((t,k)=>{const line=t.length>48?t.slice(0,48)+'…':t;o.fillText(line,x+22,y+355+k*30);});});
+    return out;
+  }
+  function buildCertificateCanvas(studentName,pledge){
+    const out=document.createElement('canvas');out.width=1400;out.height=1000;const o=out.getContext('2d');
+    o.fillStyle='#fffdf0';o.fillRect(0,0,out.width,out.height);o.strokeStyle='#ffcb38';o.lineWidth=22;o.strokeRect(28,28,out.width-56,out.height-56);o.strokeStyle='#111a35';o.lineWidth=5;o.strokeRect(55,55,out.width-110,out.height-110);
+    o.textAlign='center';o.fillStyle='#64708b';o.font='900 28px sans-serif';o.fillText('EARTH MANAGER CERTIFICATE',700,145);
+    o.fillStyle='#111a35';o.font='1000 76px sans-serif';o.fillText('지구 관리자 인증서',700,255);
+    o.fillStyle='#19b98a';o.font='1000 62px sans-serif';o.fillText(studentName,700,370);
+    o.fillStyle='#334057';o.font='30px sans-serif';o.fillText('환경 문제를 탐구하고, 게임을 설계·구현하여',700,455);o.fillText('지구 관리자 네 개의 여정을 완주했습니다.',700,505);
+    ['01','02','03','04'].forEach((n,i)=>{const x=475+i*150;o.beginPath();o.arc(x,610,48,0,Math.PI*2);o.fillStyle=['#ff7418','#8550ea','#1cb88c','#ed4295'][i];o.fill();o.fillStyle='#fff';o.font='900 27px sans-serif';o.fillText(n,x,620);});
+    o.fillStyle='#effbf7';o.beginPath();o.roundRect(230,700,940,135,24);o.fill();o.fillStyle='#168565';o.font='900 24px sans-serif';o.fillText('나의 지구 관리자 실천 다짐',700,748);o.fillStyle='#111a35';o.font='900 30px sans-serif';const cleanPledge=pledge.length>48?pledge.slice(0,48)+'…':pledge;o.fillText(cleanPledge||'아직 작성하지 않았습니다.',700,795);
+    o.fillStyle='#64708b';o.font='700 22px sans-serif';o.fillText('AI와 함께, 그러나 내 생각으로 판단하는 지구 관리자',700,900);o.textAlign='start';
+    return out;
+  }
+  $('#saveStoryboard')?.addEventListener('click',()=>{
+    const out=buildStoryboardCanvas();
     const a=document.createElement('a');a.download='earth-manager-storyboard.png';a.href=out.toDataURL('image/png');a.click();
   });
 
@@ -986,6 +1008,31 @@
     const v=$('#pledgeInput').value.trim();
     if(!v){$('#pledgeResult').textContent='실천할 내용을 한 가지 적어주세요.';return;}
     setPledge(v);
+  });
+
+  const STUDENT_SUBMIT_URL='https://script.google.com/macros/s/AKfycbwa3cVIi2ql4re-7K9K0Ok5M--6nWYMtc9gtrQxQIrOoTk_JUbCagmSbSy4QHXV3XDv/exec';
+  $('#submitStudentWork')?.addEventListener('click',async()=>{
+    const button=$('#submitStudentWork'),status=$('#submitStudentStatus');
+    const studentName=(state.name||$('#nameInput')?.value||$('#certNameInput')?.value||'').trim();
+    if(!studentName||studentName==='EARTH MANAGER'){
+      status.textContent='먼저 탑승권에서 이름 또는 관리자 ID를 입력해 주세요.';
+      $('#nameInput')?.focus();return;
+    }
+    const pledge=$('#pledgeInput')?.value.trim()||state.pledge;
+    if(!pledge){status.textContent='보내기 전에 나의 실천 다짐을 적어 주세요.';$('#pledgeInput')?.focus();return;}
+    const answers=Object.fromEntries($$('[data-story-text]').map(el=>[el.dataset.storyText,el.value.trim()]));
+    const stories=[1,2,3,4].map(n=>$$(`[data-story-text^="${n}"]`).map(el=>el.value.trim()).filter(Boolean).join('\n'));
+    const payload={studentName,stories,pledge,completedStations:[...state.completed].sort(),answers,storyboardImage:buildStoryboardCanvas().toDataURL('image/jpeg',.82),certificateImage:buildCertificateCanvas(studentName,pledge).toDataURL('image/jpeg',.9)};
+    button.disabled=true;button.textContent='보내는 중…';status.textContent='그림과 답변을 선생님께 보내고 있어요.';
+    try{
+      const body=new URLSearchParams({payload:JSON.stringify(payload)});
+      await fetch(STUDENT_SUBMIT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body});
+      status.textContent='✅ 제출 완료! 선생님의 Google 시트에 활동 결과가 저장됐어요.';
+      button.textContent='✅ 제출 완료';
+    }catch(error){
+      status.textContent='전송하지 못했어요. 인터넷 연결을 확인하고 다시 눌러 주세요.';
+      button.disabled=false;button.textContent='다시 보내기';
+    }
   });
 
   // 각 차시가 시작되기 전에 현재 위치를 보여주는 노선도를 반복 배치합니다.
