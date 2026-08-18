@@ -220,7 +220,7 @@
   footer{padding:34px 0;background:#0d1428;color:#cbd3e4;text-align:center}
 
   @media(max-width:900px){
-    .hero-grid,.boarding-grid,.letter-box,.mission-grid,.certificate-wrap{grid-template-columns:1fr}
+    .hero-grid,.boarding-grid,.letter-box,.mission-grid,.certificate-wrap,.letter-game-preview{grid-template-columns:1fr}
     .planet-area{min-height:380px}
     .data-grid,.gallery-grid,.difficulty-grid{grid-template-columns:1fr 1fr}
     .steps{display:flex;overflow:auto;padding-bottom:2px}
@@ -307,6 +307,7 @@
   .ai-bridge{margin:24px 0;padding:24px;border-radius:22px;background:#f1edff;border:2px solid #cfc5ff;text-align:center}.ai-bridge h3{font-size:27px;margin:0 0 8px}.ai-bridge p{margin:0}
   .simple-ai-rule{margin:22px 0 30px;padding:22px;border:3px solid var(--orange);border-radius:22px;background:#fff8eb;text-align:center}.simple-ai-rule b{display:block;font-size:25px}.simple-ai-rule span{display:inline-block;margin:8px 12px;font-size:28px;color:var(--orange)}
   .mission-preview{margin-top:28px;padding:28px;border-radius:26px;background:linear-gradient(135deg,#e8f3ff,#f3efff);border:3px solid var(--navy)}.mission-preview h3{font-size:28px;margin:0 0 8px}.mission-flow{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:18px}.mission-flow b{background:#fff;border:2px solid var(--navy);border-radius:14px;padding:12px 16px}.mission-flow span{font-size:24px;color:var(--orange);font-weight:1000}
+  .letter-game-preview{margin-top:24px;padding:24px;border:3px solid var(--navy);border-radius:26px;background:#101a34;color:#fff;display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:center;overflow:hidden}.letter-game-copy h3{font-size:30px;margin:8px 0}.letter-game-copy p{color:#d6ddef}.letter-game-copy .btn{margin-top:8px}.preview-screen{position:relative;min-height:310px;border:4px solid #fff;border-radius:22px;overflow:hidden;background:linear-gradient(#72d8ff 0 58%,#dff4c8 58%);box-shadow:0 14px 0 rgba(0,0,0,.22)}.preview-hud{position:absolute;z-index:6;inset:14px 14px auto;display:flex;justify-content:space-between;gap:8px;font-weight:1000}.preview-hud span{padding:7px 10px;border-radius:10px;background:rgba(17,26,52,.88)}.preview-city{position:absolute;left:0;right:0;bottom:72px;height:76px;background:linear-gradient(90deg,#5d6980 0 9%,transparent 9% 12%,#78849a 12% 26%,transparent 26% 31%,#536079 31% 45%,transparent 45% 49%,#6b7690 49% 67%,transparent 67% 72%,#505c75 72% 84%,transparent 84% 88%,#748097 88%)}.preview-water{position:absolute;z-index:4;left:0;right:0;bottom:0;height:65px;background:linear-gradient(rgba(38,179,244,.82),#087cc4)}.preview-player{position:absolute;z-index:5;left:18%;bottom:74px;font-size:52px;filter:drop-shadow(0 5px 2px rgba(0,0,0,.2))}.preview-item{position:absolute;z-index:5;font-size:34px}.preview-item.good{left:54%;bottom:115px}.preview-item.bad{right:12%;bottom:92px}.preview-screen.demo-on .preview-player{animation:previewPlayer 5s ease-in-out forwards}.preview-screen.demo-on .preview-water{animation:previewWater 5s linear forwards}.preview-screen.demo-on .preview-item.good{animation:previewCollect 5s ease-in-out forwards}.preview-screen.demo-on .preview-score::after{content:' +1';color:#6ff0ba}@keyframes previewPlayer{0%{left:18%}45%{left:51%;bottom:105px}72%{left:65%;bottom:90px}100%{left:34%;bottom:120px}}@keyframes previewWater{from{height:65px}to{height:122px}}@keyframes previewCollect{0%,42%{opacity:1;transform:scale(1)}50%,100%{opacity:0;transform:scale(1.7)}}
   .story-fields{display:grid;gap:8px;margin-top:10px}
   .story-fields label{font-size:13px;font-weight:900;color:#455069}
   .story-fields textarea{width:100%;min-height:58px;resize:vertical;border:1.5px solid #bdc7d8;border-radius:11px;padding:10px 11px;font:inherit;background:#fff}
@@ -566,6 +567,15 @@
         <p>저는 2050년의 지구입니다. 지난 30년 동안 저는 많이 변했어요. 얼음이 녹아 해수면이 더 높아졌고, 많은 도시가 물에 잠길 위험에 처해 있어요.</p>
         <p><strong>지구의 문제를 알아보고, 2050년의 지구를 바꾸는 게임을 만들어 주세요.</strong></p>
       </article>
+    </div>
+    <div class="letter-game-preview">
+      <div class="letter-game-copy"><span class="station-tag" style="color:var(--sky)">GAME PREVIEW · EARTH MANAGER</span><h3>우리가 만들 게임을 먼저 만나볼까요?</h3><p>캐릭터를 움직여 좋은 아이템을 모으고 나쁜 아이템을 피합니다. 그동안 해수면은 시간에 따라 서서히 올라와요.</p><button class="btn yellow" id="playLetterPreview" type="button">▶ 미리보기 재생</button></div>
+      <div class="preview-screen" id="letterPreviewScreen" aria-label="지구 관리자 게임의 움직임, 아이템 수집, 해수면 상승 미리보기">
+        <div class="preview-hud"><span class="preview-score">지구 보호 점수 0</span><span>TIME 00:30</span></div><div class="preview-city"></div>
+        <div class="preview-player" aria-hidden="true"><svg viewBox="0 0 64 64" width="54" height="54"><circle cx="32" cy="31" r="25" fill="#fff" stroke="#111a35" stroke-width="4"/><path d="M17 28c2-15 28-18 32 0" fill="#75d9ff" stroke="#111a35" stroke-width="4"/><circle cx="25" cy="34" r="3" fill="#111a35"/><circle cx="40" cy="34" r="3" fill="#111a35"/><path d="M26 43q7 6 14 0" fill="none" stroke="#111a35" stroke-width="3" stroke-linecap="round"/></svg></div>
+        <span class="preview-item good" aria-hidden="true"><svg viewBox="0 0 48 48" width="38" height="38"><path d="M24 42V22" stroke="#087d58" stroke-width="5" stroke-linecap="round"/><path d="M24 28C9 29 6 15 8 8c12 0 19 5 19 16" fill="#42d79b" stroke="#087d58" stroke-width="3"/><path d="M24 32c13 0 18-9 17-18-11 0-17 5-17 15" fill="#7ee6b9" stroke="#087d58" stroke-width="3"/></svg></span>
+        <span class="preview-item bad" aria-hidden="true"><svg viewBox="0 0 48 48" width="38" height="38"><path d="M16 12h16l4 29H12z" fill="#ff756f" stroke="#8b2428" stroke-width="3"/><path d="M18 12l-3-7m15 7 3-7M15 5h18" fill="none" stroke="#8b2428" stroke-width="3" stroke-linecap="round"/></svg></span><div class="preview-water"></div>
+      </div>
     </div>
 
     <article class="earth-day-card">
@@ -883,6 +893,10 @@
     $('#letter').classList.remove('closed');
     $('#openLetter').textContent='📬 편지가 열렸어요';
     $('#openLetter').disabled=true;
+  });
+  $('#playLetterPreview')?.addEventListener('click',()=>{
+    const screen=$('#letterPreviewScreen'),button=$('#playLetterPreview');
+    screen.classList.remove('demo-on');void screen.offsetWidth;screen.classList.add('demo-on');button.textContent='↻ 다시 보기';
   });
 
   $('#toggleEarthHour')?.addEventListener('click',()=>{
