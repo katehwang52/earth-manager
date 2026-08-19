@@ -52,6 +52,12 @@
   .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center;padding:78px 0}
   .accent{color:var(--sky)}
   .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+  .hero-entry-tools{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:28px}
+  .hero-entry-tools .hero-actions{margin-top:0}
+  .hero-qr{display:flex;align-items:center;gap:12px;padding:10px 14px 10px 10px;border:3px solid var(--navy);border-radius:18px;background:#fff;box-shadow:0 8px 0 rgba(17,26,53,.12);color:var(--navy);text-decoration:none}
+  .hero-qr img{width:92px;height:92px;display:block;border-radius:8px}
+  .hero-qr strong{display:block;font-size:15px;line-height:1.25}
+  .hero-qr span{display:block;margin-top:5px;color:#65708a;font-size:12px;font-weight:700}
   .planet-area{position:relative;min-height:460px;display:grid;place-items:center}
   .planet{width:min(420px,80vw);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#38d7ff 0 22%,#0aa7e9 42%,#087dbf 76%);box-shadow:0 24px 70px rgba(5,116,168,.25);position:relative;animation:float 5s ease-in-out infinite}
   .land{position:absolute;background:#0fb57a;border-radius:42% 58% 56% 44% / 52% 38% 62% 48%}
@@ -239,6 +245,9 @@
     section{padding:64px 0}
     .hero{min-height:auto}
     .hero-grid{padding:60px 0 76px}
+    .hero-entry-tools{align-items:stretch}
+    .hero-entry-tools .hero-actions,.hero-entry-tools .hero-actions .btn{width:100%}
+    .hero-qr{width:100%;justify-content:center}
     .planet-area{min-height:300px}
     .orbit-badge{width:72px;height:72px;border-width:4px;font-size:13px}
     .train{font-size:56px}
@@ -448,8 +457,14 @@
       <p class="lead" style="margin:20px 0 12px">초등 5~6학년 · AI융합 환경교육 · 4차시</p>
       <h1><span class="hero-title-line">AI와 함께하는</span><span class="hero-title-line"><span class="accent">지구 관리자</span></span></h1>
       <p class="lead">“내가 선택하는 2050년의 지구”</p>
-      <div class="hero-actions">
-        <a class="btn orange" href="#boarding">🚂 미션 시작하기</a>
+      <div class="hero-entry-tools">
+        <div class="hero-actions">
+          <a class="btn orange" href="#boarding">🚂 미션 시작하기</a>
+        </div>
+        <a class="hero-qr" href="https://katehwang52.github.io/earth-manager/" aria-label="지구 관리자 웹페이지 열기">
+          <img src="https://quickchart.io/qr?size=220&margin=1&text=https%3A%2F%2Fkatehwang52.github.io%2Fearth-manager%2F" alt="지구 관리자 웹페이지 접속 QR코드">
+          <span><strong>📱 QR로 바로 접속</strong><span>카메라로 찍어 보세요</span></span>
+        </a>
       </div>
     </div>
     <div class="planet-area" aria-label="지구 관리자 열차 일러스트">
@@ -616,8 +631,8 @@
 
     <div class="hallucination-lab" aria-label="AI 환각 체험">
       <article class="ai-chat">
-        <div class="ai-chat-head"><div><span class="station-tag" style="color:var(--purple)">AI에게 물어보기</span><h3 style="margin:6px 0 0">초코똥번개가 뭐야?</h3></div><span style="font-size:38px">🤖</span></div>
-        <div class="fake-query">“초코똥번개가 뭐야?”</div>
+        <div class="ai-chat-head"><div><span class="station-tag" style="color:var(--purple)">AI에게 물어보기</span></div><span style="font-size:38px">🤖</span></div>
+        <div class="fake-query">“<span style="color:#8b4a24">초코똥번개</span>가 뭐야?”</div>
         <div class="fake-answer" style="margin-top:14px">
           <b>AI의 답변</b><br>
           “초코똥번개는 남미 안데스 산맥 고지대에서 우기가 시작될 무렵 관측되는 희귀한 자연 현상이에요. 갈색빛 번개가 치고, 번개가 지나간 자리에는 코코아 향이 나는 먼지층이 남는다고 해서 이런 이름이 붙었습니다. 1974년 페루의 기상학자가 처음 보고했고…”
