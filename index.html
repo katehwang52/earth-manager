@@ -1333,9 +1333,6 @@
     station2MissionStart.append(missionPreview);
     missionPreview.append(gamePreview);
   }
-  // AI는 지구 문제와 조사 방법을 충분히 만난 뒤 소개합니다.
-  const aiDefinition=$('#station1 .ai-definition'),aiBridge=$('#station1 .ai-bridge');
-  if(aiDefinition&&aiBridge)aiBridge.parentNode.insertBefore(aiDefinition,aiBridge);
   // 난이도 선택은 게임 설계가 아니라 AI에게 원하는 게임을 설명하는 단계에서 사용합니다.
   const difficultyIntro=$('#station2 .difficulty-intro'),difficultyGrid=$('#station2 .difficulty-grid'),promptBuilder=$('#vibeLab .prompt-builder');
   if(difficultyIntro&&difficultyGrid&&promptBuilder)promptBuilder.after(difficultyIntro,difficultyGrid);
